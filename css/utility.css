@@ -11,22 +11,18 @@
     z-index: 10000;
     max-width: 400px;
     animation: slideInRight 0.3s ease;
-    /* Slide in from right */
 }
 
 .notification-success {
     background: #10b981;
-    /* Green for success */
 }
 
 .notification-error {
     background: #ef4444;
-    /* Red for error */
 }
 
 .notification-info {
     background: #3b82f6;
-    /* Blue for info */
 }
 
 @keyframes slideInRight {

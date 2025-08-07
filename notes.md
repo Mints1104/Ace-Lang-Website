@@ -43,9 +43,11 @@
 ---
 
 ## 3. CSS/HTML Navigation
-- Use the Table of Contents at the top of `styles.css` and `index.html`.
-- Use `Ctrl+F` to search for section numbers or class names.
-- Use browser Inspect tool to find which CSS rules apply to an element.
+- Use the Table of Contents at the top of `index.html` and check the `css/` folder for the relevant CSS file for each section.
+- Each CSS file in `css/` is named after the section it styles (e.g., `header.css`, `services.css`).
+- Use `Ctrl+P` or your editor’s file search to quickly open the right CSS file.
+- Use `Ctrl+F` to search for class names or section numbers within each CSS file.
+- Use browser Inspect tool to find which CSS rules apply to an element, then look for those classes in the correct CSS file in `css/`.
 
 ---
 
@@ -61,5 +63,21 @@
   - This is a bigger task; would require duplicating content and toggling languages.
 - **Q: How do I change the logo?**
   - Replace the `<h1>` in Section 1. Header Section with an `<img>` tag.
+
+## CSS File Overview
+
+All CSS files are now in the `css/` folder. Here’s what each one is for:
+
+- `base.css` – Reset, typography, and base layout styles
+- `header.css` – Header and navigation styles
+- `hero.css` – Hero section styles
+- `features.css` – Why Choose Us/Features section
+- `services.css` – Services and language services
+- `about.css` – About section and stats
+- `contact.css` – Contact form and info
+- `map.css` – Map section styles
+- `footer.css` – Footer styles
+- `responsive.css` – All media queries and responsive tweaks
+- `utility.css` – Notifications, animations, and utility classes
 
 
