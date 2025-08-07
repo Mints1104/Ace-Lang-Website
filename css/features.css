@@ -1,5 +1,11 @@
 /* 5. Why Choose Us Section ========================= */
 /* Feature cards showing company strengths. */
+.why-choose-us {
+    padding: 3rem 0 5rem 0;
+    /* Increased top padding for more space above */
+    background: #f7fafc;
+}
+
 .features-grid {
     display: grid;
     /* Use CSS Grid for layout */

@@ -1,5 +1,11 @@
 /* 6. Services Section ========================= */
 /* Grid of all services offered. To add a service, copy a .service-item block in HTML. */
+.services {
+    /* padding: 0rem 0 0rem 0; */
+
+    background: white;
+}
+
 .services-grid {
     display: grid;
     /* Use CSS Grid for service items */
