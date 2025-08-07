@@ -88,7 +88,7 @@
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }); 
         
         // Animate elements on scroll
         const observerOptions = {
@@ -129,55 +129,6 @@
                     <button class="notification-close">&times;</button>
                 </div>
             `;
-            
-            // Add styles
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                z-index: 10000;
-                max-width: 400px;
-                animation: slideInRight 0.3s ease;
-            `;
-            
-            // Add animation styles
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideInRight {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                .notification-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                }
-                .notification-close {
-                    background: none;
-                    border: none;
-                    color: white;
-                    font-size: 1.5rem;
-                    cursor: pointer;
-                    padding: 0;
-                    line-height: 1;
-                }
-                .notification-close:hover {
-                    opacity: 0.8;
-                }
-            `;
-            document.head.appendChild(style);
             
             // Add to page
             document.body.appendChild(notification);
