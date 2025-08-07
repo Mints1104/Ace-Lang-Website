@@ -7,12 +7,27 @@
     --primary-color: #2d3748;
     --primary-dark: #1a202c;
     --primary-light: #4a5568;
-
-    /* Accent Colors */
+    
+    /* Accent Colors - Enhanced Palette */
     --accent-color: #3182ce;
     --accent-light: #63b3ed;
     --accent-dark: #2c5282;
-
+    
+    /* Warm Accent Colors */
+    --warm-accent: #f56565;
+    --warm-accent-light: #fc8181;
+    --warm-accent-dark: #e53e3e;
+    
+    /* Success/Positive Colors */
+    --success-color: #48bb78;
+    --success-light: #68d391;
+    --success-dark: #38a169;
+    
+    /* Premium/Purple Accent */
+    --premium-color: #805ad5;
+    --premium-light: #9f7aea;
+    --premium-dark: #553c9a;
+    
     /* Neutral Colors */
     --text-primary: #1a202c;
     --text-secondary: #4a5568;
