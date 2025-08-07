@@ -29,8 +29,38 @@
     }
 
     .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* Smaller columns for mobile */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+        /* Better mobile layout with fewer columns */
+    }
+
+    .language-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--spacing-md);
+        /* Optimized language grid for mobile */
+    }
+
+    .service-item {
+        padding: var(--spacing-lg);
+        /* Reduced padding for mobile */
+    }
+
+    .language-item {
+        padding: var(--spacing-md);
+        /* Reduced padding for mobile */
+    }
+
+    /* Medium mobile screens (480px - 768px) */
+    @media (max-width: 600px) {
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* Slightly smaller minimum width for medium mobile */
+        }
+
+        .language-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            /* Smaller language items for medium mobile */
+        }
     }
 
     .container {
@@ -65,7 +95,34 @@
 
     .services-grid {
         grid-template-columns: 1fr;
-        /* Only one column for very small screens */
+        gap: var(--spacing-sm);
+        /* Single column for very small screens */
+    }
+
+    .language-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        /* Single column for very small screens */
+    }
+
+    .service-item {
+        padding: var(--spacing-md);
+        /* Even smaller padding for very small screens */
+    }
+
+    .language-item {
+        padding: var(--spacing-sm);
+        /* Even smaller padding for very small screens */
+    }
+
+    .service-item i {
+        font-size: 2rem;
+        /* Smaller icons for mobile */
+    }
+
+    .language-item i {
+        font-size: 1.5rem;
+        /* Smaller icons for mobile */
     }
 
     .contact-form-container {
@@ -78,6 +135,29 @@
 
     .stat-number {
         font-size: 2rem;
+    }
+
+    /* Additional mobile optimizations */
+    .service-item,
+    .language-item {
+        min-height: 80px;
+        /* Ensure minimum touch target size */
+    }
+
+    .service-item h3,
+    .language-item h4 {
+        font-size: 1rem;
+        /* Slightly smaller text for mobile */
+    }
+
+    /* Improve spacing for mobile */
+    .services {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .language-services {
+        margin-top: var(--spacing-xl);
+        padding-top: var(--spacing-xl);
     }
 }
 
