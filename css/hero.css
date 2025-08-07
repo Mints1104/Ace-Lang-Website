@@ -2,12 +2,14 @@
 /* Large intro section with main headline and call-to-action. */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-    /* Hero gradient */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
     color: white;
-    padding: 6rem 0;
+    padding: clamp(4rem, 10vh, 6rem) 0;
     text-align: center;
     overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
 }
 
 .hero-background {
@@ -17,52 +19,95 @@
     right: 0;
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-    /* SVG grid overlay */
     opacity: 0.3;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    /* Ensures content is above background */
     max-width: 800px;
     margin: 0 auto;
+    animation: fadeInUp 1s ease-out;
 }
 
 .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: var(--spacing-lg);
     font-weight: 700;
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    /* Subtle text shadow */
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: var(--spacing-xl);
     opacity: 0.95;
     color: #f7fafc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-cta {
-    background: #ffffff;
-    color: #2d3748;
-    padding: 1rem 2rem;
+    background: var(--accent-color);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-xl);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     font-weight: 600;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
     display: inline-block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-md);
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.hero-cta:hover::before {
+    left: 100%;
 }
 
 .hero-cta:hover {
-    background: #f7fafc;
-    color: #1a202c;
+    background: var(--accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    border-color: #e2e8f0;
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-light);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
