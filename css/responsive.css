@@ -1,18 +1,7 @@
 /* 12. Responsive Design ========================= */
 /* Media queries for tablet and mobile layouts. Adjusts grid, font sizes, and spacing. */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        /* Stack header items vertically on small screens */
-        text-align: center;
-        /* Center text for mobile */
-    }
-
-    .header-contact {
-        flex-direction: column;
-        /* Stack contact info vertically */
-        gap: 1rem;
-    }
+    /* Header styles are now handled in header.css */
 
     .hero h2 {
         font-size: 2rem;

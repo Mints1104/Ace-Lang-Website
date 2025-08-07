@@ -304,5 +304,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // --- Mobile Burger Menu Functionality ---
+    const burgerMenu = document.querySelector('.burger-menu');
+    const mobileSidebar = document.querySelector('.mobile-sidebar');
+    const sidebarOverlay = document.querySelector('.sidebar-overlay');
+    const closeSidebar = document.querySelector('.close-sidebar');
+    const burgerIcon = document.querySelector('.burger-icon');
+
+    function openSidebar() {
+        mobileSidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+        burgerIcon.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebarMenu() {
+        mobileSidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+        burgerIcon.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Burger menu click handler
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', openSidebar);
+    }
+
+    // Close sidebar handlers
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', closeSidebarMenu);
+    }
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebarMenu);
+    }
+
+    // Close sidebar when clicking on navigation links
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeSidebarMenu();
+        });
+    });
+
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileSidebar.classList.contains('active')) {
+            closeSidebarMenu();
+        }
+    });
+
         console.log('Ace Language Services website loaded successfully!');
 }); 
