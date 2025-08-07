@@ -1,0 +1,52 @@
+/* 8. About Section ========================= */
+/* Company description and statistics. */
+.about {
+    padding: 5rem 0;
+    background: #f7fafc;
+}
+
+.about-content {
+    display: grid;
+    /* Use CSS Grid for about section */
+    grid-template-columns: 2fr 1fr;
+    /* Two columns: main text (2x), stats (1x) */
+    gap: 3rem;
+    /* Space between columns */
+    align-items: start;
+    /* Align items to the top */
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #4a5568;
+    font-weight: 500;
+}

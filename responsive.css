@@ -1,0 +1,155 @@
+/* 12. Responsive Design ========================= */
+/* Media queries for tablet and mobile layouts. Adjusts grid, font sizes, and spacing. */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        /* Stack header items vertically on small screens */
+        text-align: center;
+        /* Center text for mobile */
+    }
+
+    .header-contact {
+        flex-direction: column;
+        /* Stack contact info vertically */
+        gap: 1rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+        /* Smaller headline for mobile */
+    }
+
+    .hero p {
+        font-size: 1rem;
+        /* Smaller paragraph for mobile */
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        /* Single column for features */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* Smaller columns for mobile */
+    }
+
+    .container {
+        padding: 0 15px;
+        /* Less padding on mobile */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .why-choose-us,
+    .services,
+    .about,
+    .contact {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        /* Only one column for very small screens */
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* 13. Smooth Scrolling ========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 14. Focus Styles for Accessibility ========================= */
+button:focus,
+input:focus,
+textarea:focus,
+a:focus {
+    outline: 2px solid #2d3748;
+    outline-offset: 2px;
+}
+
+/* 15. Loading Animation ========================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Start below and invisible */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* End at normal position and visible */
+    }
+}
+
+.feature-card,
+.service-item,
+.stat-item {
+    animation: fadeInUp 0.6s ease-out;
+    /* Animates element on scroll */
+}
+
+/* 16. Hover Effects ========================= */
+.service-item:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(74, 85, 104, 0.15);
+}
+
+/* 17. Header Scrolled State ========================= */
+.header.scrolled {
+    background: rgba(45, 55, 72, 0.95);
+    backdrop-filter: blur(10px);
+}

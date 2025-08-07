@@ -1,0 +1,63 @@
+/* 18. Notification Styles ========================= */
+/* Styles for popup notifications (success, error, info). */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease;
+    /* Slide in from right */
+}
+
+.notification-success {
+    background: #10b981;
+    /* Green for success */
+}
+
+.notification-error {
+    background: #ef4444;
+    /* Red for error */
+}
+
+.notification-info {
+    background: #3b82f6;
+    /* Blue for info */
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.notification-close:hover {
+    opacity: 0.8;
+}

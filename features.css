@@ -1,0 +1,58 @@
+/* 5. Why Choose Us Section ========================= */
+/* Feature cards showing company strengths. */
+.features-grid {
+    display: grid;
+    /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsive columns: as many 300px columns as fit, else 1fr */
+    gap: 2rem;
+    /* Space between grid items */
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    /* Rounded corners */
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /* Card shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth hover */
+    border: 1px solid #e2e8f0;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    /* Lift on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: #cbd5e0;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2d3748, #4a5568);
+    /* Icon circle gradient */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.2);
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card h3 {
+    color: #1a202c;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #4a5568;
+    line-height: 1.6;
+}
