@@ -354,5 +354,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-        console.log('Ace Language Services website loaded successfully!');
+    // --- Mobile Collapse/Expand Functionality ---
+    const collapseServicesBtn = document.getElementById('collapseServices');
+    const collapseLanguagesBtn = document.getElementById('collapseLanguages');
+    const servicesGrid = document.getElementById('servicesGrid');
+    const languageGrid = document.getElementById('languageGrid');
+
+    function toggleCollapse(button, grid, itemSelector, showText, hideText) {
+        const isExpanded = grid.classList.contains('expanded');
+        
+        if (isExpanded) {
+            // Collapse - hide items after the first few
+            const items = grid.querySelectorAll(itemSelector);
+            items.forEach((item, index) => {
+                if (index >= (itemSelector === '.service-item' ? 6 : 4)) {
+                    // First animate out, then hide
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    // After animation completes, hide the item
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                        item.style.removeProperty('--item-delay');
+                    }, 400); // Match CSS transition duration
+                }
+            });
+            grid.classList.remove('expanded');
+            button.querySelector('.collapse-text').textContent = showText;
+            button.classList.remove('expanded');
+        } else {
+            // Expand - show all items with dynamic transition delays
+            const items = grid.querySelectorAll(itemSelector);
+            items.forEach((item, index) => {
+                // Show item first
+                item.style.display = 'flex';
+                
+                // Set dynamic transition delay based on item index
+                const delay = (index + 1) * 0.1; // 0.1s delay per item
+                item.style.setProperty('--item-delay', `${delay}s`);
+                
+                // Force reflow, then animate in
+                item.offsetHeight; // Force reflow
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            });
+            grid.classList.add('expanded');
+            button.querySelector('.collapse-text').textContent = hideText;
+            button.classList.add('expanded');
+        }
+    }
+
+    if (collapseServicesBtn && servicesGrid) {
+        collapseServicesBtn.addEventListener('click', function() {
+            toggleCollapse(
+                this, 
+                servicesGrid, 
+                '.service-item', 
+                'Show More', 
+                'Show Less'
+            );
+        });
+    }
+
+    if (collapseLanguagesBtn && languageGrid) {
+        collapseLanguagesBtn.addEventListener('click', function() {
+            toggleCollapse(
+                this, 
+                languageGrid, 
+                '.language-item', 
+                'Show More', 
+                'Show Less'
+            );
+        });
+    }
+
+    console.log('Ace Language Services website loaded successfully!');
 }); 

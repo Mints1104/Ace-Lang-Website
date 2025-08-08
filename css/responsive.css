@@ -29,37 +29,100 @@
     }
 
     .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: var(--spacing-md);
-        /* Better mobile layout with fewer columns */
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+        /* Two columns for better space utilization */
     }
 
     .language-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: var(--spacing-md);
-        /* Optimized language grid for mobile */
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+        /* Three columns for better space utilization */
     }
 
     .service-item {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
         /* Reduced padding for mobile */
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .service-item i {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .service-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0;
+        text-align: left;
     }
 
     .language-item {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
         /* Reduced padding for mobile */
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .language-item i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .language-item h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    /* Add quick contact button for mobile */
+    .quick-contact-mobile {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--accent-color);
+        color: white;
+        padding: var(--spacing-md);
+        border-radius: 50%;
+        border-color: black;
+        box-shadow: var(--shadow-lg);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all var(--transition-normal);
+        width: 60px;
+        height: 60px;
+    }
+
+    .quick-contact-mobile:hover {
+        background: var(--accent-dark);
+        transform: scale(1.1);
+        color: white;
+    }
+
+    .quick-contact-mobile i {
+        font-size: 1.5rem;
     }
 
     /* Medium mobile screens (480px - 768px) */
     @media (max-width: 600px) {
         .services-grid {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            /* Slightly smaller minimum width for medium mobile */
+            grid-template-columns: repeat(2, 1fr);
+            /* Two columns for medium mobile */
         }
 
         .language-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            /* Smaller language items for medium mobile */
+            grid-template-columns: repeat(3, 1fr);
+            /* Three columns for medium mobile */
         }
     }
 
@@ -84,7 +147,14 @@
     .services,
     .about,
     .contact {
-        padding: 3rem 0;
+        padding: 2rem 0;
+        /* Reduced padding for mobile */
+    }
+
+    /* Reduce spacing between sections */
+    .language-services {
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
     }
 }
 
@@ -94,34 +164,36 @@
     }
 
     .services-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-        /* Single column for very small screens */
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+        /* Two columns for very small screens */
     }
 
     .language-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-        /* Single column for very small screens */
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+        /* Two columns for very small screens */
     }
 
     .service-item {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
         /* Even smaller padding for very small screens */
+        gap: var(--spacing-sm);
     }
 
     .language-item {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-xs);
         /* Even smaller padding for very small screens */
+        gap: var(--spacing-xs);
     }
 
     .service-item i {
-        font-size: 2rem;
+        font-size: 1.2rem;
         /* Smaller icons for mobile */
     }
 
     .language-item i {
-        font-size: 1.5rem;
+        font-size: 1rem;
         /* Smaller icons for mobile */
     }
 
@@ -140,24 +212,43 @@
     /* Additional mobile optimizations */
     .service-item,
     .language-item {
-        min-height: 80px;
-        /* Ensure minimum touch target size */
+        min-height: 60px;
+        /* Smaller minimum height for mobile */
     }
 
     .service-item h3,
     .language-item h4 {
-        font-size: 1rem;
-        /* Slightly smaller text for mobile */
+        font-size: 0.9rem;
+        /* Smaller text for mobile */
     }
 
     /* Improve spacing for mobile */
     .services {
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-lg) 0;
     }
 
     .language-services {
-        margin-top: var(--spacing-xl);
-        padding-top: var(--spacing-xl);
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
+    }
+
+    /* Smaller quick contact button for very small screens */
+    .quick-contact-mobile {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .quick-contact-mobile i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Hide quick contact button on desktop */
+@media (min-width: 769px) {
+    .quick-contact-mobile {
+        display: none;
     }
 }
 

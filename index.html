@@ -155,8 +155,14 @@
     -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Our Products & Services</h2>
-            <div class="services-grid">
+            <div class="section-header">
+                <h2 class="section-title">Our Products & Services</h2>
+                <button class="collapse-toggle" id="collapseServices" aria-label="Show/hide services">
+                    <span class="collapse-text">Show More</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="services-grid" id="servicesGrid">
                 <div class="service-item">
                     <i class="fas fa-phone-alt"></i>
                     <h3>Emergency Interpretation & Translation</h3>
@@ -225,8 +231,14 @@
             
             <!-- Language Translation Services -->
             <div class="language-services">
-                <h3 class="language-section-title">Language Translation Services</h3>
-                <div class="language-grid">
+                <div class="section-header">
+                    <h3 class="language-section-title">Language Translation Services</h3>
+                    <button class="collapse-toggle" id="collapseLanguages" aria-label="Show/hide languages">
+                        <span class="collapse-text">Show More</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="language-grid" id="languageGrid">
                     <div class="language-item">
                         <i class="fas fa-language"></i>
                         <h4>Chinese Translation</h4>
@@ -414,6 +426,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Quick Contact Button for Mobile -->
+    <a href="#contact" class="quick-contact-mobile" aria-label="Quick contact">
+        <i class="fas fa-envelope"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>

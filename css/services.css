@@ -49,9 +49,22 @@
 .service-item i {
     font-size: 2.5rem;
     color: var(--accent-color);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
     display: block;
     transition: transform var(--transition-normal);
+}
+
+/* Desktop-specific styles to ensure proper spacing */
+@media (min-width: 769px) {
+    .service-item i {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .language-item i {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
 }
 
 .service-item:hover i {
@@ -63,6 +76,213 @@
     color: var(--text-primary);
     margin-bottom: 0;
     font-weight: 600;
+}
+
+/* Section Headers with Integrated Controls */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-md);
+}
+
+.section-header .section-title,
+.section-header .language-section-title {
+    margin-bottom: 0;
+    flex: 1;
+    position: relative;
+}
+
+
+
+.collapse-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    align-items: center;
+    gap: var(--spacing-xs);
+    white-space: nowrap;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+}
+
+.collapse-toggle:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-dark);
+    border-color: var(--accent-color);
+}
+
+.collapse-toggle i {
+    font-size: 0.8rem;
+    transition: transform var(--transition-normal);
+}
+
+.collapse-toggle.expanded i {
+    transform: rotate(180deg);
+}
+
+/* Mobile Collapse/Expand Controls */
+.mobile-controls {
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.collapse-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.collapse-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.collapse-btn i {
+    transition: transform var(--transition-normal);
+}
+
+.collapse-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+/* Mobile optimizations for services */
+@media (max-width: 768px) {
+    .services {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .service-item {
+        padding: var(--spacing-sm);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs);
+        min-height: 80px;
+        justify-content: center;
+    }
+
+    .service-item i {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .service-item h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .service-item:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Show subtle collapse controls on mobile */
+    .collapse-toggle {
+        display: flex;
+    }
+
+    /* Initially hide some items on mobile */
+    .services-grid .service-item:nth-child(n+7) {
+        display: none;
+    }
+
+    .language-grid .language-item:nth-child(n+5) {
+        display: none;
+    }
+
+    /* Show all items when expanded */
+    .services-grid.expanded .service-item,
+    .language-grid.expanded .language-item {
+        display: flex;
+    }
+
+    /* Animation for service items appearing */
+    .services-grid .service-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition-delay: var(--item-delay, 0s);
+    }
+
+    /* Show initial items without animation */
+    .services-grid .service-item:nth-child(-n+6) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+    }
+
+    .service-item {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+        min-height: 70px;
+    }
+
+    .service-item i {
+        font-size: 1.2rem;
+    }
+
+    .service-item h3 {
+        font-size: 0.75rem;
+    }
+
+    .collapse-toggle {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs);
+    }
+
+    /* Improve mobile layout for section headers */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .section-header .section-title,
+    .section-header .language-section-title {
+        text-align: left;
+        width: 100%;
+    }
+
+    .collapse-toggle {
+        align-self: flex-end;
+        margin-top: var(--spacing-xs);
+    }
 }
 
 /* 7. Language Services Section ========================= */
@@ -138,7 +358,7 @@
 .language-item i {
     font-size: 1.5rem;
     color: var(--accent-color);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     display: block;
     position: relative;
     z-index: 2;
@@ -156,4 +376,84 @@
     font-weight: 500;
     position: relative;
     z-index: 2;
+}
+
+/* Mobile optimizations for language services */
+@media (max-width: 768px) {
+    .language-services {
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
+    }
+
+    .language-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .language-item {
+        padding: var(--spacing-sm);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs);
+        min-height: 60px;
+        justify-content: center;
+        border: 1px solid var(--border-color);
+    }
+
+    .language-item i {
+        display: block;
+        /* Show icons on mobile */
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .language-item h4 {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .language-item:hover {
+        transform: translateY(-1px);
+    }
+
+    /* Animation for language items appearing */
+    .language-grid .language-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition-delay: var(--item-delay, 0s);
+    }
+
+    /* Show initial items without animation */
+    .language-grid .language-item:nth-child(-n+4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+    }
+
+    .language-item {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+        min-height: 50px;
+    }
+
+    .language-item h4 {
+        font-size: 0.7rem;
+    }
+
+    .language-item i {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xs);
+    }
 }
