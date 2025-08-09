@@ -222,13 +222,14 @@
         display: none;
     }
 
-    .language-grid .language-item:nth-child(n+5) {
+    /* Remove the nth-child rule that conflicts with JavaScript filtering */
+    /* .language-grid .language-item:nth-child(n+5) {
         display: none;
-    }
+    } */
 
     /* Show all items when expanded */
     .services-grid.expanded .service-item,
-    .language-grid.expanded .language-item {
+    .language-grid.expanded .language-item:not(.hidden) {
         display: flex;
     }
 
@@ -321,6 +322,51 @@
     border-radius: 2px;
 }
 
+/* Language controls styling */
+.language-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.region-filter {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    min-width: 200px;
+}
+
+.region-filter:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.region-filter:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Language item visibility */
+.language-item {
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-item.hidden {
+    display: none;
+}
+
 .language-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -411,7 +457,6 @@
 
     .language-item i {
         display: block;
-        /* Show icons on mobile */
         font-size: 1.2rem;
         margin-bottom: var(--spacing-xs);
     }
@@ -419,27 +464,16 @@
     .language-item h4 {
         font-size: 0.8rem;
         margin-bottom: 0;
-        text-align: center;
-        line-height: 1.2;
     }
 
     .language-item:hover {
         transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
     }
 
-    /* Animation for language items appearing */
-    .language-grid .language-item {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        transition-delay: var(--item-delay, 0s);
-    }
-
-    /* Show initial items without animation */
-    .language-grid .language-item:nth-child(-n+4) {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0s;
+    /* Mobile: ensure expanded state shows all visible items */
+    .language-grid.expanded .language-item:not(.hidden) {
+        display: flex !important;
     }
 }
 
@@ -460,8 +494,9 @@
     }
 
     .language-item i {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-xs);
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xs);
+    }
 }
 
 /* Language note styling */
@@ -486,4 +521,38 @@
     font-weight: 700;
     font-size: 1.2rem;
 }
+
+/* Desktop language grid - show first 12 by default, rest when expanded */
+@media (min-width: 769px) {
+    /* Remove the nth-child rule that conflicts with JavaScript filtering */
+    /* .language-grid .language-item:nth-child(n+13) {
+        display: none;
+    } */
+    
+    .language-grid.expanded .language-item:not(.hidden) {
+        display: flex !important;
+    }
+    
+    /* Show collapse toggle on desktop for language section */
+    .language-services .collapse-toggle {
+        display: flex;
+    }
+    
+    /* Desktop-specific styling for collapse toggle */
+    .language-services .collapse-toggle {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border: 2px solid var(--accent-color);
+        background: white;
+        color: var(--accent-color);
+        border-radius: var(--radius-md);
+        transition: all var(--transition-normal);
+    }
+    
+    .language-services .collapse-toggle:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
 }

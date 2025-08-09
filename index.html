@@ -245,87 +245,417 @@
             
             <!-- Language Translation Services -->
             <div class="language-services">
-                <div class="section-header">
-                    <h3 class="language-section-title">Language Translation Services</h3>
-                    <button class="collapse-toggle" id="collapseLanguages" aria-label="Show/hide languages">
-                        <span class="collapse-text">Show More</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-                                 <div class="language-grid" id="languageGrid">
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Arabic Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Bengali Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Chinese Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Dutch Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>French Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>German Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Hindi Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Italian Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Japanese Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Korean Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Polish Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Portuguese Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Russian Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Spanish Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Swedish Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Turkish Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Urdu Translation</h4>
-                     </div>
-                     <div class="language-item">
-                         <i class="fas fa-language"></i>
-                         <h4>Vietnamese Translation</h4>
+                                 <div class="section-header">
+                     <h3 class="language-section-title">Language Translation Services</h3>
+                     <div class="language-controls">
+                         <select class="region-filter" id="regionFilter">
+                             <option value="all">All Regions</option>
+                             <option value="european">European Languages</option>
+                             <option value="african">African Languages</option>
+                             <option value="asian">Asian Languages</option>
+                             <option value="middle-eastern">Middle Eastern Languages</option>
+                         </select>
+                         <button class="collapse-toggle" id="collapseLanguages" aria-label="Show/hide languages">
+                             <span class="collapse-text">Show More</span>
+                             <i class="fas fa-chevron-down"></i>
+                         </button>
                      </div>
                  </div>
+                                                   <div class="language-grid" id="languageGrid">
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Arabic Translation</h4>
+                      </div>
+                                           <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Bengali Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Chinese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Dutch Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>French Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>German Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Hindi Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Italian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Japanese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Korean Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Polish Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Portuguese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Russian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Spanish Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Swedish Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Turkish Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Urdu Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Vietnamese Translation</h4>
+                      </div>
+                                           <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Afrikaans Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Oromo Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Tigrinya Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Amharic Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Nuer Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Otjiherero Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Runyankore Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Rukiga Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Sudanese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Swahili Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Lingala Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Yoruba Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Pidgin Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Fula Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Hausa Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Igbo Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Zulu Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Bambara Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Krio Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Bajunu Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Kinyarwanda Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Sarahule Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Soninke Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Mandinka Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Mandingo Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Zaghawa Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Wolof Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Twi Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Sisaala Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="african">
+                          <i class="fas fa-language"></i>
+                          <h4>Susu Translation</h4>
+                      </div>
+                                           <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Slovak Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Roma Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Albanian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Hungarian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Czech Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Serbian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Croatian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Bosnian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Azerbaijani Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Danish Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Georgian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Greek Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Estonian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Latvian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Lithuanian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Macedonian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Welsh Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Armenian Translation</h4>
+                      </div>
+                                           <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Balti Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Bengali Sylheti Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Bengali Dhaka Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Burmese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Cantonese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Mandarin Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Kurdish Sorani Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Kurdish Badhini Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Kurdish Murmanji Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Filipino Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Tagalog Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Punjabi Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Tetum Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Telugu Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Tamil Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Sinhalese Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Gujarati Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Farsi Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Dari Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="middle-eastern">
+                          <i class="fas fa-language"></i>
+                          <h4>Pashto Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Malay Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Indonesian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Malaysian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Kazakh Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Kyrgyz Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Uzbek Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Mongolian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="asian">
+                          <i class="fas fa-language"></i>
+                          <h4>Nepali Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Romanian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Bulgarian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Ukrainian Translation</h4>
+                      </div>
+                      <div class="language-item" data-region="european">
+                          <i class="fas fa-language"></i>
+                          <h4>Norwegian Translation</h4>
+                      </div>
+                    
+                  </div>
                  <div class="language-note">
                      <p><strong>And many more!</strong> We support over 150 languages including regional dialects, minority languages, and specialized industry terminology. Contact us for any language not listed above.</p>
                  </div>

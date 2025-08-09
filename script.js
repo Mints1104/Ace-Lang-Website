@@ -349,37 +349,42 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isExpanded) {
             // Collapse - hide items after the first few
             const items = grid.querySelectorAll(itemSelector);
+            let visibleCount = 0;
+            const maxVisible = itemSelector === '.service-item' ? 6 : (window.innerWidth > 768 ? 12 : 4);
+            
             items.forEach((item, index) => {
-                if (index >= (itemSelector === '.service-item' ? 6 : 4)) {
-                    // First animate out, then hide
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    
-                    // After animation completes, hide the item
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                        item.style.removeProperty('--item-delay');
-                    }, 400); // Match CSS transition duration
+                // Only count items that are not hidden by region filter
+                if (!item.classList.contains('hidden')) {
+                    visibleCount++;
+                    if (visibleCount > maxVisible) {
+                        // First animate out, then hide
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        
+                        // After animation completes, hide the item
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                            item.style.removeProperty('--item-delay');
+                        }, 400); // Match CSS transition duration
+                    }
                 }
             });
             grid.classList.remove('expanded');
             button.querySelector('.collapse-text').textContent = showText;
             button.classList.remove('expanded');
         } else {
-            // Expand - show all items with dynamic transition delays
+            // Expand - show all items from the current region only
             const items = grid.querySelectorAll(itemSelector);
+            
             items.forEach((item, index) => {
-                // Show item first
-                item.style.display = 'flex';
-                
-                // Set dynamic transition delay based on item index
-                const delay = (index + 1) * 0.1; // 0.1s delay per item
-                item.style.setProperty('--item-delay', `${delay}s`);
-                
-                // Force reflow, then animate in
-                item.offsetHeight; // Force reflow
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
+                // Only show items that are not hidden by region filter
+                if (!item.classList.contains('hidden')) {
+                    // Show item and reset any inline styles that might interfere
+                    item.style.display = '';
+                    item.style.opacity = '';
+                    item.style.transform = '';
+                    item.style.removeProperty('--item-delay');
+                }
             });
             grid.classList.add('expanded');
             button.querySelector('.collapse-text').textContent = hideText;
@@ -408,6 +413,148 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Show More', 
                 'Show Less'
             );
+        });
+    }
+
+    // --- Region Filter Functionality ---
+    const regionFilter = document.getElementById('regionFilter');
+    const languageItems = document.querySelectorAll('.language-item');
+
+    // Function to sort language items alphabetically
+    function sortLanguageItems() {
+        const languageGrid = document.getElementById('languageGrid');
+        if (!languageGrid) return;
+
+        // Convert NodeList to Array for sorting
+        const itemsArray = Array.from(languageItems);
+        
+        // Sort items alphabetically by language name
+        itemsArray.sort((a, b) => {
+            const languageA = a.querySelector('h4').textContent.toLowerCase();
+            const languageB = b.querySelector('h4').textContent.toLowerCase();
+            return languageA.localeCompare(languageB);
+        });
+
+        // Re-append sorted items to the grid
+        itemsArray.forEach(item => {
+            languageGrid.appendChild(item);
+        });
+    }
+
+    // Initialize the language grid with correct collapse state
+    function initializeLanguageGrid() {
+        if (languageGrid) {
+            // Reset to collapsed state
+            languageGrid.classList.remove('expanded');
+            if (collapseLanguagesBtn) {
+                collapseLanguagesBtn.classList.remove('expanded');
+                collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+            }
+            
+            // First reset all items to their default state
+            languageItems.forEach(item => {
+                item.style.display = '';
+                item.style.opacity = '';
+                item.style.transform = '';
+                item.style.removeProperty('--item-delay');
+            });
+            
+            // Get current region selection
+            const currentRegion = regionFilter ? regionFilter.value : 'all';
+            
+            // Apply region filtering first
+            languageItems.forEach(item => {
+                if (currentRegion === 'all' || item.dataset.region === currentRegion) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Then apply initial collapse state to visible items based on screen size
+            let visibleCount = 0;
+            const maxVisible = window.innerWidth > 768 ? 12 : 4;
+            
+            languageItems.forEach(item => {
+                if (!item.classList.contains('hidden')) {
+                    visibleCount++;
+                    if (visibleCount > maxVisible) {
+                        item.style.display = 'none';
+                    } else {
+                        item.style.display = '';
+                        item.style.opacity = '';
+                        item.style.transform = '';
+                    }
+                }
+            });
+        }
+    }
+
+    // Call initialization when page loads
+    if (languageGrid) {
+        // Sort items first, then initialize
+        sortLanguageItems();
+        initializeLanguageGrid();
+    }
+
+    // Handle window resize to update language grid
+    window.addEventListener('resize', function() {
+        if (languageGrid) {
+            initializeLanguageGrid();
+        }
+    });
+
+    if (regionFilter) {
+        regionFilter.addEventListener('change', function() {
+            const selectedRegion = this.value;
+            
+            // Reset collapse state when region changes
+            if (languageGrid && collapseLanguagesBtn) {
+                languageGrid.classList.remove('expanded');
+                collapseLanguagesBtn.classList.remove('expanded');
+                collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+            }
+            
+            // First, reset all items to their default state
+            languageItems.forEach(item => {
+                // Reset all display and animation properties
+                item.style.display = '';
+                item.style.opacity = '';
+                item.style.transform = '';
+                item.style.removeProperty('--item-delay');
+            });
+            
+            // Then apply region filtering
+            languageItems.forEach(item => {
+                if (selectedRegion === 'all' || item.dataset.region === selectedRegion) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                    // Hide filtered items
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Now apply initial collapse state to visible items based on screen size
+            // This ensures we show the correct number of items for the current region
+            let displayedCount = 0;
+            const maxVisible = window.innerWidth > 768 ? 12 : 4;
+            
+            languageItems.forEach(item => {
+                if (!item.classList.contains('hidden')) {
+                    displayedCount++;
+                    if (displayedCount > maxVisible) {
+                        // Hide items beyond the max visible count
+                        item.style.display = 'none';
+                    } else {
+                        // Ensure visible items are properly displayed
+                        item.style.display = '';
+                        item.style.opacity = '';
+                        item.style.transform = '';
+                    }
+                }
+            });
         });
     }
 
@@ -468,5 +615,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    console.log('Ace Language Services website loaded successfully!');
 }); 
