@@ -179,7 +179,7 @@
 
 /* Phone link styling for contact section */
 .contact .phone-link {
-    color: inherit;
+    color: var(--text-primary);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -192,7 +192,7 @@
 
 /* Email link styling for contact section */
 .contact .email-link {
-    color: inherit;
+    color: var(--text-primary);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -202,6 +202,8 @@
     color: var(--accent-color);
     text-decoration: underline;
 }
+
+.contact .contact-item h3 {
     color: var(--text-primary);
     font-size: 1.1rem;
 }
