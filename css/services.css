@@ -11,6 +11,13 @@
     gap: var(--spacing-lg);
 }
 
+/* Desktop: 4-column layout for larger screens */
+@media (min-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .service-item {
     background: var(--bg-secondary);
     padding: var(--spacing-xl);
