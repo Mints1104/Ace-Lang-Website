@@ -217,36 +217,41 @@
         display: flex;
     }
 
-    /* Initially hide some items on mobile */
-    .services-grid .service-item:nth-child(n+7) {
+    /* Remove nth-child rules - let JavaScript handle visibility */
+    /* .services-grid .service-item:nth-child(n+7) {
         display: none;
-    }
+    } */
 
     /* Remove the nth-child rule that conflicts with JavaScript filtering */
     /* .language-grid .language-item:nth-child(n+5) {
         display: none;
     } */
 
+    /* JavaScript-controlled hiding using classes instead of inline styles */
+    .services-grid .service-item.js-hidden,
+    .language-grid .language-item.js-hidden {
+        display: none !important;
+    }
+
     /* Show all items when expanded */
-    .services-grid.expanded .service-item,
-    .language-grid.expanded .language-item:not(.hidden) {
+    .services-grid.expanded .service-item:not(.js-hidden),
+    .language-grid.expanded .language-item:not(.hidden):not(.js-hidden) {
         display: flex;
     }
 
-    /* Animation for service items appearing */
-    .services-grid .service-item {
+    /* Remove conflicting animation rules that override JavaScript */
+    /* .services-grid .service-item {
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.4s ease, transform 0.4s ease;
         transition-delay: var(--item-delay, 0s);
     }
 
-    /* Show initial items without animation */
     .services-grid .service-item:nth-child(-n+6) {
         opacity: 1;
         transform: translateY(0);
         transition-delay: 0s;
-    }
+    } */
 }
 
 @media (max-width: 480px) {

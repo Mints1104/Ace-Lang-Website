@@ -357,15 +357,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!item.classList.contains('hidden')) {
                     visibleCount++;
                     if (visibleCount > maxVisible) {
-                        // First animate out, then hide
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(20px)';
-                        
-                        // After animation completes, hide the item
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                            item.style.removeProperty('--item-delay');
-                        }, 400); // Match CSS transition duration
+                        // Use class-based hiding instead of inline styles to avoid conflicts
+                        item.classList.add('js-hidden');
+                    } else {
+                        // Ensure visible items don't have the hidden class
+                        item.classList.remove('js-hidden');
                     }
                 }
             });
@@ -379,11 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
             items.forEach((item, index) => {
                 // Only show items that are not hidden by region filter
                 if (!item.classList.contains('hidden')) {
-                    // Show item and reset any inline styles that might interfere
-                    item.style.display = '';
-                    item.style.opacity = '';
-                    item.style.transform = '';
-                    item.style.removeProperty('--item-delay');
+                    // Remove JS hiding class
+                    item.classList.remove('js-hidden');
                 }
             });
             grid.classList.add('expanded');
@@ -491,7 +484,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Initialize services grid collapse state
+    function initializeServicesGrid() {
+        if (servicesGrid && collapseServicesBtn) {
+            // Reset to collapsed state
+            servicesGrid.classList.remove('expanded');
+            collapseServicesBtn.classList.remove('expanded');
+            collapseServicesBtn.querySelector('.collapse-text').textContent = 'Show More';
+            
+            // Hide items beyond the limit using class-based approach
+            const items = servicesGrid.querySelectorAll('.service-item');
+            const maxVisible = 6; // Always 6 for services
+            
+            items.forEach((item, index) => {
+                if (index >= maxVisible) {
+                    item.classList.add('js-hidden');
+                } else {
+                    item.classList.remove('js-hidden');
+                }
+            });
+        }
+    }
+
     // Call initialization when page loads
+    if (servicesGrid) {
+        initializeServicesGrid();
+    }
+    
     if (languageGrid) {
         // Sort items first, then initialize
         sortLanguageItems();
