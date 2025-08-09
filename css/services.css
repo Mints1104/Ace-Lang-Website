@@ -460,7 +460,30 @@
     }
 
     .language-item i {
-        font-size: 1rem;
-        margin-bottom: var(--spacing-xs);
-    }
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Language note styling */
+.language-note {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.language-note p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.language-note strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 }
