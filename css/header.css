@@ -36,13 +36,6 @@ body .header,
     z-index: 1000 !important;
 }
 
-/* Ensure the body allows sticky positioning */
-body {
-    overflow-x: hidden;
-    /* Ensure sticky positioning works */
-    position: relative;
-}
-
 /* Two-row header layout */
 .header-top {
     display: flex;

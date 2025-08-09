@@ -82,6 +82,7 @@ body {
     background-color: var(--bg-primary);
     font-weight: 400;
     font-size: 16px;
+    position: relative;
 }
 
 .container {
