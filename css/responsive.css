@@ -91,16 +91,19 @@
         color: white;
         padding: var(--spacing-md);
         border-radius: 50%;
-        border-color: black;
         box-shadow: var(--shadow-lg);
         z-index: 1000;
         display: flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        transition: all var(--transition-normal);
+        transition: all var(--transition-normal), outline 0.2s ease, box-shadow 0.3s ease;
         width: 60px;
         height: 60px;
+        /* Prevent iOS touch highlighting */
+        -webkit-tap-highlight-color: transparent;
+        /* Improve touch target */
+        touch-action: manipulation;
     }
 
     .quick-contact-mobile:hover {
@@ -264,6 +267,34 @@ textarea:focus,
 a:focus {
     outline: 2px solid #2d3748;
     outline-offset: 2px;
+}
+
+/* Enhanced focus styles for quick contact button */
+.quick-contact-mobile:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+.quick-contact-mobile:focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.quick-contact-mobile:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Force remove focus state after click/touch */
+.quick-contact-mobile:active {
+    outline: none !important;
+}
+
+.quick-contact-mobile.no-focus {
+    outline: none !important;
+    box-shadow: var(--shadow-lg) !important;
 }
 
 /* 15. Loading Animation ========================= */

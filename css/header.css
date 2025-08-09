@@ -11,12 +11,78 @@
     transition: all var(--transition-normal);
 }
 
-.header-content {
+/* Two-row header layout */
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: var(--spacing-sm);
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Desktop Navigation Styles */
+.desktop-nav {
+    display: flex;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.desktop-nav li {
+    margin: 0;
+}
+
+.desktop-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    position: relative;
+    white-space: nowrap;
+}
+
+.desktop-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.desktop-nav a:active {
+    transform: translateY(0);
+}
+
+/* Add subtle underline animation */
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: all var(--transition-normal);
+    transform: translateX(-50%);
+}
+
+.desktop-nav a:hover::after {
+    width: 80%;
 }
 
 .logo h1 {
@@ -262,12 +328,25 @@
         padding: var(--spacing-sm) 0;
     }
 
-    .header-content {
+    /* Mobile: Convert back to single row layout */
+    .header-top {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         gap: var(--spacing-sm);
         text-align: left;
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    /* Hide desktop navigation and bottom row on mobile */
+    .header-bottom {
+        display: none;
+    }
+
+    .desktop-nav {
+        display: none;
     }
 
     .logo h1 {
@@ -286,6 +365,18 @@
 
     .burger-menu {
         display: block;
+    }
+}
+
+/* Tablet adjustments for navigation */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .desktop-nav ul {
+        gap: var(--spacing-lg);
+    }
+    
+    .desktop-nav a {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 }
 

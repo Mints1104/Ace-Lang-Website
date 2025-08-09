@@ -428,5 +428,62 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- Enhanced Quick Contact Button Focus Management ---
+    const quickContactBtn = document.querySelector('.quick-contact-mobile');
+    if (quickContactBtn) {
+        
+        function removeFocus() {
+            quickContactBtn.classList.add('no-focus');
+            quickContactBtn.blur();
+            if (document.activeElement === quickContactBtn) {
+                document.activeElement.blur();
+            }
+            // Remove the class after a short delay to allow transitions
+            setTimeout(() => {
+                quickContactBtn.classList.remove('no-focus');
+            }, 300);
+        }
+
+        // Handle focus management for better UX
+        quickContactBtn.addEventListener('click', function(e) {
+            // Immediately remove focus on click
+            setTimeout(removeFocus, 10);
+        });
+
+        // Enhanced keyboard navigation
+        quickContactBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                // Simulate click and then remove focus
+                this.click();
+                setTimeout(removeFocus, 10);
+            }
+        });
+
+        // Remove focus on touch devices
+        quickContactBtn.addEventListener('touchstart', function() {
+            setTimeout(removeFocus, 10);
+        });
+
+        // Remove focus when the button loses active state
+        quickContactBtn.addEventListener('mouseup', function() {
+            setTimeout(removeFocus, 10);
+        });
+
+        // Additional safety net - remove focus when scrolling starts
+        window.addEventListener('scroll', function() {
+            if (document.activeElement === quickContactBtn) {
+                removeFocus();
+            }
+        });
+
+        // Force remove focus when clicking anywhere else
+        document.addEventListener('click', function(e) {
+            if (e.target !== quickContactBtn && document.activeElement === quickContactBtn) {
+                removeFocus();
+            }
+        });
+    }
+
     console.log('Ace Language Services website loaded successfully!');
 }); 
