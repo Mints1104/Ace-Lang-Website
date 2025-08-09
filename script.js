@@ -495,14 +495,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (languageGrid) {
         // Sort items first, then initialize
         sortLanguageItems();
+        // Set initial mobile state for resize detection
+        languageGrid.dataset.isMobile = (window.innerWidth <= 768).toString();
         initializeLanguageGrid();
     }
 
-    // Handle window resize to update language grid
+    // Handle window resize to update language grid with debouncing
+    let resizeTimeout;
     window.addEventListener('resize', function() {
-        if (languageGrid) {
-            initializeLanguageGrid();
-        }
+        // Clear the previous timeout
+        clearTimeout(resizeTimeout);
+        
+        // Set a new timeout to debounce the resize event
+        resizeTimeout = setTimeout(function() {
+            if (languageGrid) {
+                // Only reinitialize if the screen size category has actually changed
+                const currentIsMobile = window.innerWidth <= 768;
+                const previousIsMobile = languageGrid.dataset.isMobile === 'true';
+                
+                if (currentIsMobile !== previousIsMobile) {
+                    // Update the stored mobile state
+                    languageGrid.dataset.isMobile = currentIsMobile.toString();
+                    // Only reinitialize if the mobile/desktop state has changed
+                    initializeLanguageGrid();
+                }
+            }
+        }, 250); // 250ms debounce delay
     });
 
     if (regionFilter) {
