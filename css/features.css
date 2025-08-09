@@ -6,6 +6,11 @@
     background: #f7fafc;
 }
 
+/* Ensure consistent spacing between section title and cards */
+.why-choose-us .section-title {
+    margin-bottom: var(--spacing-xl);
+}
+
 .features-grid {
     display: grid;
     /* Use CSS Grid for layout */
