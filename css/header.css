@@ -129,7 +129,8 @@
 
 /* Ensure header contact info is always visible and properly styled */
 .header .contact-item span,
-.header .contact-item p {
+.header .contact-item p,
+.header .contact-item a {
     color: #ffffff !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -138,8 +139,21 @@
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    transition: none !important;
+    transition: color 0.2s ease !important;
     transform: none !important;
+    text-decoration: none !important;
+}
+
+/* Phone link styling for header */
+.header .phone-link:hover {
+    color: var(--accent-color) !important;
+    text-decoration: underline !important;
+}
+
+/* Email link styling for header */
+.header .email-link:hover {
+    color: var(--accent-color) !important;
+    text-decoration: underline !important;
 }
 
 /* Override any contact section styling for header */
@@ -302,6 +316,30 @@
 .sidebar-contact .contact-item {
     margin-bottom: var(--spacing-sm);
     color: white;
+}
+
+/* Phone link styling for mobile sidebar */
+.sidebar-contact .phone-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-contact .phone-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Email link styling for mobile sidebar */
+.sidebar-contact .email-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-contact .email-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
 .sidebar-overlay {

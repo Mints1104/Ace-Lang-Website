@@ -254,32 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // --- Enhanced Click-to-Copy for Contact Info (excluding header) ---
-    const contactInfo = document.querySelectorAll('.contact .contact-item span, .contact .contact-item p');
-    contactInfo.forEach(info => {
-        if (info.textContent.includes('@') || info.textContent.includes('+44')) {
-            info.style.cursor = 'pointer';
-            info.title = 'Click to copy';
-            info.style.transition = 'color 0.2s ease';
-            
-            info.addEventListener('click', function() {
-                const originalColor = this.style.color;
-                this.style.color = '#3182ce';
-                
-                navigator.clipboard.writeText(this.textContent).then(() => {
-                    showNotification('Contact information copied to clipboard!', 'success');
-                    setTimeout(() => {
-                        this.style.color = originalColor;
-                    }, 1000);
-                }).catch(() => {
-                    showNotification('Could not copy to clipboard.', 'error');
-                    setTimeout(() => {
-                        this.style.color = originalColor;
-                    }, 1000);
-                });
-            });
-        }
-    });
+    // Note: Contact info (phone and email) now use tel: and mailto: links for better UX
+    // Click-to-copy functionality removed in favor of native link behavior
 
     // --- Service Item Click Handlers ---
     const serviceItems = document.querySelectorAll('.service-item');

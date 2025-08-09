@@ -175,6 +175,33 @@
 
 .contact .contact-item h3 {
     margin-bottom: var(--spacing-sm);
+}
+
+/* Phone link styling for contact section */
+.contact .phone-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact .phone-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Email link styling for contact section */
+.contact .email-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact .email-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
     color: var(--text-primary);
     font-size: 1.1rem;
 }
