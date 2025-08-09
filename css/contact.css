@@ -264,6 +264,19 @@
     text-decoration: underline;
 }
 
+/* Address link styling for contact section */
+.contact .address-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact .address-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
 .contact .contact-item h3 {
     color: var(--text-primary);
     font-size: 1.1rem;
