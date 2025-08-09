@@ -66,6 +66,144 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
+    // --- File Upload Handling ---
+    const fileInput = document.getElementById('documents');
+    const fileList = document.getElementById('fileList');
+    const fileLabel = document.querySelector('.file-label');
+    let selectedFiles = [];
+
+    // Ensure file label is clickable (backup for label association)
+    if (fileLabel && fileInput) {
+        fileLabel.addEventListener('click', function(e) {
+            console.log('File label clicked');
+            // Prevent any default behavior that might interfere
+            e.preventDefault();
+            // Directly trigger the file input
+            fileInput.click();
+        });
+        
+        // Also ensure the label has proper styling
+        fileLabel.style.cursor = 'pointer';
+        console.log('File upload handlers attached');
+    } else {
+        console.log('File input or label not found:', { fileInput, fileLabel });
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function getFileIcon(fileName) {
+        const extension = fileName.split('.').pop().toLowerCase();
+        if (['pdf'].includes(extension)) return { icon: 'fas fa-file-pdf', class: 'file-icon-pdf' };
+        if (['doc', 'docx'].includes(extension)) return { icon: 'fas fa-file-word', class: 'file-icon-doc' };
+        if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) return { icon: 'fas fa-file-image', class: 'file-icon-image' };
+        if (['txt'].includes(extension)) return { icon: 'fas fa-file-alt', class: 'file-icon-text' };
+        return { icon: 'fas fa-file', class: '' };
+    }
+
+    function validateFile(file) {
+        const maxSize = 10 * 1024 * 1024; // 10MB
+        const allowedTypes = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'text/plain',
+            'image/jpeg',
+            'image/jpg',
+            'image/png'
+        ];
+
+        if (file.size > maxSize) {
+            showNotification(`File "${file.name}" is too large. Maximum size is 10MB.`, 'error');
+            return false;
+        }
+
+        if (!allowedTypes.includes(file.type)) {
+            showNotification(`File type "${file.type}" is not allowed. Please use PDF, Word, Text, or Image files.`, 'error');
+            return false;
+        }
+
+        return true;
+    }
+
+    function updateFileList() {
+        fileList.innerHTML = '';
+        
+        selectedFiles.forEach((file, index) => {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            
+            const fileIcon = getFileIcon(file.name);
+            
+            fileItem.innerHTML = `
+                <div class="file-item-info">
+                    <i class="${fileIcon.icon} ${fileIcon.class}"></i>
+                    <span class="file-item-name">${file.name}</span>
+                    <span class="file-item-size">(${formatFileSize(file.size)})</span>
+                </div>
+                <button type="button" class="file-remove" data-index="${index}" aria-label="Remove file">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            fileList.appendChild(fileItem);
+        });
+
+        // Add event listeners to remove buttons
+        fileList.querySelectorAll('.file-remove').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                selectedFiles.splice(index, 1);
+                updateFileList();
+                
+                // Update the file input
+                const dt = new DataTransfer();
+                selectedFiles.forEach(file => dt.items.add(file));
+                fileInput.files = dt.files;
+            });
+        });
+    }
+
+    // File input change handler
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            
+            files.forEach(file => {
+                if (validateFile(file)) {
+                    // Check if file already exists
+                    const exists = selectedFiles.some(existingFile => 
+                        existingFile.name === file.name && existingFile.size === file.size
+                    );
+                    
+                    if (!exists) {
+                        selectedFiles.push(file);
+                    } else {
+                        showNotification(`File "${file.name}" is already selected.`, 'error');
+                    }
+                }
+            });
+            
+            // Limit total files
+            if (selectedFiles.length > 5) {
+                showNotification('Maximum 5 files allowed. Please remove some files.', 'error');
+                selectedFiles = selectedFiles.slice(0, 5);
+            }
+            
+            updateFileList();
+            
+            // Update the file input
+            const dt = new DataTransfer();
+            selectedFiles.forEach(file => dt.items.add(file));
+            fileInput.files = dt.files;
+        });
+    }
+
     // Enhanced form validation
     function validateForm(formData) {
         const errors = [];
@@ -184,6 +322,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     showNotification('Thank you for your message! We will get back to you soon.', 'success');
                     contactForm.reset();
+                    // Reset file upload
+                    selectedFiles = [];
+                    updateFileList();
                     // Remove any error styling and success states
                     inputs.forEach(input => {
                         input.classList.remove('error');
@@ -224,9 +365,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Header Scroll Effect ---
+    // --- Fixed Header Setup and Scroll Effect ---
     const header = document.querySelector('.header');
     
+    // Set correct body padding based on actual header height
+    function updateBodyPadding() {
+        if (header) {
+            const headerHeight = header.offsetHeight;
+            document.body.style.paddingTop = headerHeight + 'px';
+        }
+    }
+    
+    // Update padding on load and window resize
+    updateBodyPadding();
+    window.addEventListener('resize', updateBodyPadding);
+    
+    // Keep the scroll effect for background transparency
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
         

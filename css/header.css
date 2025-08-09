@@ -1,12 +1,12 @@
 /* 2. Header Styles ========================= */
 /* Styles for the top navigation/header, including logo, slogan, and contact info. */
 
-/* Simple sticky header */
+/* Fixed header - always visible at top */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
     padding: var(--spacing-md) 0;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

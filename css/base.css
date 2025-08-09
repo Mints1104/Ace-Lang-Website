@@ -75,6 +75,11 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Add top padding to account for fixed header */
+body {
+    padding-top: 120px; /* Approximate header height - will be adjusted by JavaScript */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
