@@ -1,5 +1,13 @@
 /* 2. Header Styles ========================= */
 /* Styles for the top navigation/header, including logo, slogan, and contact info. */
+
+/* Fix for white space above header on mobile */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure header extends to top of viewport */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
@@ -9,6 +17,12 @@
     z-index: 1000;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
+    /* Ensure header extends to top of viewport */
+    margin-top: 0;
+    /* Ensure full width coverage */
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 /* Two-row header layout */
@@ -389,6 +403,12 @@
 @media (max-width: 768px) {
     .header {
         padding: var(--spacing-sm) 0;
+        /* Ensure header extends to top of viewport on mobile */
+        margin-top: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
     }
 
     /* Mobile: Convert back to single row layout */
@@ -446,6 +466,15 @@
 @media (max-width: 480px) {
     .header {
         padding: var(--spacing-xs) 0;
+        /* Ensure header extends to top of viewport on very small screens */
+        margin-top: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        /* Ensure full viewport width coverage */
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
     }
 
     .logo h1 {
