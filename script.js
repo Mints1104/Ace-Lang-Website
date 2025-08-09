@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Remove existing error styling
                 this.classList.remove('error');
+                this.parentNode.classList.remove('success');
                 const existingError = this.parentNode.querySelector('.field-error');
                 if (existingError) existingError.remove();
 
@@ -144,6 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorDiv.textContent = errorMessage;
                     errorDiv.style.cssText = 'color: #f56565; font-size: 0.875rem; margin-top: 0.25rem;';
                     this.parentNode.appendChild(errorDiv);
+                } else if (value.length > 0) {
+                    // Add success state for valid fields
+                    this.parentNode.classList.add('success');
                 }
             });
         });
@@ -163,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalText = submitBtn.textContent;
             const originalDisabled = submitBtn.disabled;
 
-            // Show loading state
-            submitBtn.textContent = 'Sending...';
+            // Show loading state with animation
+            submitBtn.textContent = '';
             submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
+            submitBtn.classList.add('loading');
 
             try {
                 const response = await fetch(contactForm.action, {
@@ -180,8 +184,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     showNotification('Thank you for your message! We will get back to you soon.', 'success');
                     contactForm.reset();
-                    // Remove any error styling
-                    inputs.forEach(input => input.classList.remove('error'));
+                    // Remove any error styling and success states
+                    inputs.forEach(input => {
+                        input.classList.remove('error');
+                        input.parentNode.classList.remove('success');
+                    });
                     const errorElements = contactForm.querySelectorAll('.field-error');
                     errorElements.forEach(el => el.remove());
                 } else {
@@ -194,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset button state
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = originalDisabled;
-                submitBtn.style.opacity = '1';
+                submitBtn.classList.remove('loading');
             }
         });
     }

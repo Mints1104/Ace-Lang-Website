@@ -33,10 +33,16 @@
 }
 
 .form-group label {
-    font-weight: 600;
-    color: var(--text-primary);
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    color: var(--text-muted);
+    transition: all var(--transition-normal);
+    pointer-events: none;
+    background: var(--bg-primary);
+    padding: 0 var(--spacing-xs);
+    font-weight: 500;
     font-size: 0.9rem;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
@@ -57,6 +63,25 @@
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
     transform: translateY(-1px);
+}
+
+/* Floating Label Animation */
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    left: var(--spacing-sm);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    transform: translateY(0);
+}
+
+/* Smooth label transition */
+.form-group label {
+    transform: translateY(0);
+    transition: all var(--transition-normal), transform 0.2s ease;
 }
 
 .form-group input.error,
@@ -130,6 +155,42 @@
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
+}
+
+/* Enhanced Validation States */
+.form-group.success input,
+.form-group.success textarea {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+}
+
+.form-group.success .field-error {
+    display: none;
+}
+
+/* Loading State Animation */
+.submit-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .contact-info-container {
