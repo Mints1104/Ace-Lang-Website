@@ -1,39 +1,19 @@
 /* 2. Header Styles ========================= */
 /* Styles for the top navigation/header, including logo, slogan, and contact info. */
 
-/* Ensure header extends to top of viewport */
+/* Simple sticky header */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
     padding: var(--spacing-md) 0;
-    position: sticky !important;
-    top: 0 !important;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
-    /* Ensure header extends to top of viewport */
-    margin-top: 0;
-    /* Ensure full width coverage */
     width: 100%;
-    left: 0;
-    right: 0;
-}
-
-/* Force sticky positioning to work - highest specificity */
-html body .header,
-body .header,
-.header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
-}
-
-/* Additional fallback for sticky positioning */
-.header {
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
 }
 
 /* Two-row header layout */
@@ -413,22 +393,7 @@ body .header,
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
     .header {
-        padding: var(--spacing-sm) 0 !important;
-        /* Ensure header extends to top of viewport on mobile */
-        margin-top: 0 !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important;
-        /* Force header to extend to viewport edges */
-        margin-left: calc(-50vw + 50%) !important;
-        margin-right: calc(-50vw + 50%) !important;
-        /* Ensure sticky positioning works on mobile */
-        position: sticky !important;
-        /* Force full coverage */
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
-        /* Ensure sticky behavior works */
-        z-index: 1000 !important;
+        padding: var(--spacing-sm) 0;
     }
 
     /* Mobile: Convert back to single row layout */
@@ -485,26 +450,7 @@ body .header,
 
 @media (max-width: 480px) {
     .header {
-        padding: var(--spacing-xs) 0 !important;
-        /* Ensure header extends to top of viewport on very small screens */
-        margin-top: 0 !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important;
-        /* Ensure full viewport width coverage */
-        margin-left: calc(-50vw + 50%) !important;
-        margin-right: calc(-50vw + 50%) !important;
-        /* Ensure sticky positioning works on very small screens */
-        position: sticky !important;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
-        /* Ensure sticky behavior works */
-        z-index: 1000 !important;
-    }
-
-    /* Add top padding to body to prevent content from hiding behind fixed header */
-    body {
-        padding-top: 0 !important;
+        padding: var(--spacing-xs) 0;
     }
 
     .logo h1 {
