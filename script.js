@@ -658,6 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.opacity = '';
                 item.style.transform = '';
                 item.style.removeProperty('--item-delay');
+                item.classList.remove('hidden');
             });
             
             // Get current region selection
@@ -688,6 +689,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
+            
+            // Update button text based on current state
+            if (collapseLanguagesBtn) {
+                const visibleItems = languageItems.filter(item => !item.classList.contains('hidden'));
+                const hiddenItems = languageItems.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
+                
+                if (hiddenItems.length > 0) {
+                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+                } else {
+                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show Less';
+                }
+            }
         }
     }
 
@@ -770,6 +783,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.opacity = '';
                 item.style.transform = '';
                 item.style.removeProperty('--item-delay');
+                item.classList.remove('hidden');
             });
             
             // Then apply region filtering
@@ -780,6 +794,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.classList.add('hidden');
                 }
             });
+            
+
             
             // Now apply initial collapse state to visible items based on screen size
             // This ensures we show the correct number of items for the current region
@@ -798,6 +814,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
+            
+            // Update the button text to reflect the current state
+            if (collapseLanguagesBtn) {
+                const visibleItems = languageItems.filter(item => !item.classList.contains('hidden'));
+                const hiddenItems = languageItems.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
+                
+                if (hiddenItems.length > 0) {
+                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+                } else {
+                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show Less';
+                }
+            }
         });
     }
 

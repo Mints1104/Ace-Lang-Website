@@ -491,7 +491,7 @@ h3.language-section-title {
 }
 
 .language-item.hidden {
-    display: none;
+    display: none !important;
 }
 
 .language-grid {

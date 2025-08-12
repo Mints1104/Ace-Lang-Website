@@ -375,3 +375,8 @@ a:focus {
 .language-item:not(.js-hidden) {
     display: block;
 }
+
+/* Ensure hidden class takes precedence over js-hidden for regional filtering */
+.language-item.hidden {
+    display: none !important;
+}
