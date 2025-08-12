@@ -7,27 +7,27 @@
     --primary-color: #2d3748;
     --primary-dark: #1a202c;
     --primary-light: #4a5568;
-    
+
     /* Accent Colors - Enhanced Palette */
     --accent-color: #3182ce;
     --accent-light: #63b3ed;
     --accent-dark: #2c5282;
-    
+
     /* Warm Accent Colors */
     --warm-accent: #f56565;
     --warm-accent-light: #fc8181;
     --warm-accent-dark: #e53e3e;
-    
+
     /* Success/Positive Colors */
     --success-color: #48bb78;
     --success-light: #68d391;
     --success-dark: #38a169;
-    
+
     /* Premium/Purple Accent */
     --premium-color: #805ad5;
     --premium-light: #9f7aea;
     --premium-dark: #553c9a;
-    
+
     /* Neutral Colors */
     --text-primary: #1a202c;
     --text-secondary: #4a5568;
@@ -68,24 +68,24 @@
 }
 
 /* Ensure no white space above header */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-primary);
     overflow-x: hidden;
 }
 
-/* Add top padding to account for fixed header */
+/* Ensure body has no top margin that could cause gaps */
 body {
-    padding-top: 0; /* Will be dynamically adjusted by JavaScript */
+    margin-top: 0 !important;
+}
+
+/* Body padding will be dynamically adjusted by JavaScript to match header height */
+body {
     /* Ensure no conflicting positioning */
     position: relative;
     overflow-x: hidden;
-}
-
-/* Ensure body padding is maintained */
-html body {
-    padding-top: 0; /* Will be dynamically adjusted by JavaScript */
 }
 
 body {

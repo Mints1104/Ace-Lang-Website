@@ -15,6 +15,7 @@
     transition: all var(--transition-normal);
     width: 100% !important;
     transform: none !important;
+    margin: 0 !important;
     /* Ensure header stays on top */
     will-change: transform;
 }
@@ -444,7 +445,7 @@
     .desktop-nav ul {
         gap: var(--spacing-lg);
     }
-    
+
     .desktop-nav a {
         font-size: 0.9rem;
         padding: var(--spacing-xs) var(--spacing-sm);

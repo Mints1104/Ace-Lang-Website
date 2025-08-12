@@ -99,6 +99,60 @@
     margin-bottom: 0;
     flex: 1;
     position: relative;
+    /* Ensure these titles are still centered even in flex containers */
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* UNIFIED SECTION TITLE STYLING - All section titles should look the same */
+.section-title,
+.language-section-title {
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--text-primary) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Map section title styling */
+.map-section .section-title {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Ensure all h2 and h3 section titles are consistent */
+h2.section-title,
+h3.language-section-title {
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--text-primary) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Regular h3 headings in specific content sections (like "First Class Service", "Phone", "Email", etc.) */
+.services h3:not(.language-section-title),
+.language-services h3:not(.language-section-title),
+.about-section h3:not(.language-section-title),
+.contact-section h3:not(.language-section-title) {
+    text-align: center !important;
+    margin-bottom: var(--spacing-lg) !important;
+    color: var(--text-primary) !important;
+    font-size: 1.5rem !important;
+    /* Smaller than section titles but still prominent */
+    font-weight: 600 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
 }
 
 
@@ -115,6 +169,14 @@
     border-radius: var(--radius-sm);
     transition: all var(--transition-normal);
     align-items: center;
+    justify-content: center;
+    /* Center content horizontally */
+    text-align: center;
+    /* Center text */
+    line-height: 1;
+    /* Force consistent line height */
+    vertical-align: middle;
+    /* Force vertical alignment */
     gap: var(--spacing-xs);
     white-space: nowrap;
     flex-shrink: 0;
@@ -288,13 +350,39 @@
 
     .section-header .section-title,
     .section-header .language-section-title {
-        text-align: left;
+        /* Note: Text alignment is now handled by unified section title rules above */
         width: 100%;
     }
 
     .collapse-toggle {
         align-self: flex-end;
         margin-top: var(--spacing-xs);
+    }
+
+    /* Very small mobile language section improvements */
+    .language-controls {
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .region-filter {
+        min-width: 100px;
+        /* Even narrower on very small screens */
+        font-size: 0.8rem;
+        /* Smaller text to fit better */
+    }
+
+    .collapse-toggle {
+        font-size: 0.8rem;
+        /* Smaller text to fit better */
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    /* Language section title styling is now handled by unified rules above */
+
+    .language-services .section-header {
+        margin-bottom: var(--spacing-sm);
     }
 }
 
@@ -306,14 +394,8 @@
     border-top: 1px solid var(--border-color);
 }
 
-.language-section-title {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    font-weight: 600;
-    position: relative;
-}
+/* Language section title styling is now handled by unified section title rules above */
+/* Remove the ::after pseudo-element on mobile to prevent collision with buttons */
 
 .language-section-title::after {
     content: '';
@@ -346,6 +428,12 @@
     cursor: pointer;
     transition: all var(--transition-normal);
     min-width: 200px;
+    line-height: 1;
+    /* Force consistent line height */
+    vertical-align: middle;
+    /* Force vertical alignment */
+    text-align: center;
+    /* Ensure text is centered */
 }
 
 .region-filter:hover {
@@ -585,16 +673,16 @@
         gap: var(--spacing-lg);
         text-align: center;
     }
-    
+
     .language-note-main {
         text-align: center;
     }
-    
+
     .language-note-popular {
         border-left: none;
         border-top: 4px solid var(--accent-color);
     }
-    
+
     .popular-links {
         flex-direction: row;
         flex-wrap: wrap;
@@ -609,16 +697,16 @@
     /* .language-grid .language-item:nth-child(n+13) {
         display: none;
     } */
-    
+
     .language-grid.expanded .language-item:not(.hidden) {
         display: flex !important;
     }
-    
+
     /* Show collapse toggle on desktop for language section */
     .language-services .collapse-toggle {
         display: flex;
     }
-    
+
     /* Desktop-specific styling for collapse toggle */
     .language-services .collapse-toggle {
         font-size: 0.9rem;
@@ -629,7 +717,7 @@
         border-radius: var(--radius-md);
         transition: all var(--transition-normal);
     }
-    
+
     .language-services .collapse-toggle:hover {
         background: var(--accent-color);
         color: white;
@@ -888,22 +976,88 @@
     .language-category {
         padding: var(--spacing-md);
     }
-    
+
     .language-showcase .grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-    
+
     .related-services {
         padding: var(--spacing-xl) 0;
     }
-    
+
     .related-services-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-    
+
     .related-service-card {
         padding: var(--spacing-lg);
+    }
+
+    /* Mobile language section improvements */
+    .language-section-title::after {
+        display: none;
+        /* Remove the underline on mobile to prevent collision */
+    }
+
+    .language-controls {
+        flex-direction: row;
+        /* Keep horizontal layout */
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        justify-content: center;
+        /* Center the buttons */
+    }
+
+    .region-filter {
+        min-width: 120px;
+        /* Make it narrower so both buttons fit */
+        width: auto;
+        text-align: center;
+        line-height: 1 !important;
+        /* Force consistent line height */
+        vertical-align: middle !important;
+        /* Force vertical alignment */
+        display: flex !important;
+        /* Force flex display */
+        align-items: center !important;
+        /* Force vertical centering */
+        height: 40px;
+        /* Force consistent height */
+        padding: 8px 16px;
+        /* Force consistent padding */
+    }
+
+    .collapse-toggle {
+        width: auto;
+        /* Let it size naturally */
+        justify-content: center;
+        align-items: center;
+        /* Ensure text is vertically centered */
+        text-align: center;
+        /* Ensure text is horizontally centered */
+        line-height: 1 !important;
+        /* Force consistent line height */
+        vertical-align: middle !important;
+        /* Force vertical alignment */
+        display: flex !important;
+        /* Force flex display */
+        align-items: center !important;
+        /* Force vertical centering */
+        height: 40px;
+        /* Force consistent height */
+        padding: 8px 16px;
+        /* Force consistent padding */
+    }
+
+    /* Reduce spacing between title and controls */
+    /* Note: This is now handled by unified section title rules above */
+
+    /* Ensure proper spacing between language grid and controls */
+    .language-services .section-header {
+        margin-bottom: var(--spacing-md);
     }
 }

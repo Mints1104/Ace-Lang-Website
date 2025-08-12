@@ -2,16 +2,15 @@
 /* Media queries for tablet and mobile layouts. Adjusts grid, font sizes, and spacing. */
 @media (max-width: 768px) {
     /* Header styles are now handled in header.css */
-    
-    /* Mobile body padding adjustment for fixed header */
-    body {
-        padding-top: 80px !important; /* Reduced padding for mobile header */
-    }
-    
+
+    /* Body padding is now handled dynamically by JavaScript */
+
     /* Mobile hero adjustments to eliminate gaps */
     .hero {
-        padding: clamp(2rem, 6vh, 4rem) 0; /* Reduced top/bottom padding on mobile */
-        margin-top: 0; /* Ensure no top margin */
+        padding: clamp(2rem, 6vh, 4rem) 0;
+        /* Reduced top/bottom padding on mobile */
+        margin-top: 0;
+        /* Ensure no top margin */
     }
 
     .hero h2 {
@@ -173,17 +172,16 @@
 }
 
 @media (max-width: 480px) {
-    /* Very small mobile body padding adjustment for fixed header */
-    body {
-        padding-top: 60px !important; /* Minimal padding for very small mobile header */
-    }
-    
+    /* Body padding is now handled dynamically by JavaScript */
+
     /* Very small mobile hero adjustments */
     .hero {
-        padding: clamp(1.5rem, 5vh, 3rem) 0; /* Minimal padding for very small screens */
-        margin-top: 0; /* Ensure no top margin */
+        padding: clamp(1.5rem, 5vh, 3rem) 0;
+        /* Minimal padding for very small screens */
+        margin-top: 0;
+        /* Ensure no top margin */
     }
-    
+
     .hero h2 {
         font-size: 1.5rem;
     }
@@ -270,12 +268,7 @@
     }
 }
 
-/* Tablet body padding adjustment */
-@media (max-width: 1024px) and (min-width: 769px) {
-    body {
-        padding-top: 100px !important; /* Medium padding for tablet header */
-    }
-}
+/* Body padding is now handled dynamically by JavaScript */
 
 /* Hide quick contact button on desktop */
 @media (min-width: 769px) {
@@ -372,4 +365,16 @@ a:focus {
 .header.scrolled {
     background: rgba(45, 55, 72, 0.95);
     backdrop-filter: blur(10px);
+}
+
+/* 18. JavaScript-based Show/Hide Functionality ========================= */
+/* Hide items that are collapsed by JavaScript */
+.js-hidden {
+    display: none !important;
+}
+
+/* Ensure items are visible when not hidden by JavaScript */
+.service-item:not(.js-hidden),
+.language-item:not(.js-hidden) {
+    display: block;
 }

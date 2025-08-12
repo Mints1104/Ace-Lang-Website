@@ -412,16 +412,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateBodyPadding() {
         if (header) {
             const headerHeight = header.offsetHeight;
-            const windowWidth = window.innerWidth;
             
-            // Let CSS handle the padding on mobile/tablet for better performance
-            // Only apply JavaScript padding on desktop where we need precise control
-            if (windowWidth > 1024) {
-                document.body.style.paddingTop = headerHeight + 'px';
-            } else {
-                // Remove inline padding to let CSS media queries handle it
-                document.body.style.paddingTop = '';
-            }
+            // Always set the correct padding to match the header height
+            // This ensures no white gap appears behind the fixed header
+            document.body.style.paddingTop = headerHeight + 'px';
             
             // Ensure header stays fixed
             header.style.position = 'fixed';
@@ -566,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let visibleCount = 0;
             const maxVisible = itemSelector === '.service-item' ? 6 : (window.innerWidth > 768 ? 12 : 4);
             
-            items.forEach((item, index) => {
+            items.forEach((item) => {
                 // Only count items that are not hidden by region filter
                 if (!item.classList.contains('hidden')) {
                     visibleCount++;
@@ -586,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Expand - show all items from the current region only
             const items = grid.querySelectorAll(itemSelector);
             
-            items.forEach((item, index) => {
+            items.forEach((item) => {
                 // Only show items that are not hidden by region filter
                 if (!item.classList.contains('hidden')) {
                     // Remove JS hiding class
@@ -660,7 +654,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // First reset all items to their default state
             languageItems.forEach(item => {
-                item.style.display = '';
+                item.classList.remove('js-hidden');
                 item.style.opacity = '';
                 item.style.transform = '';
                 item.style.removeProperty('--item-delay');
@@ -675,7 +669,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
-                    item.style.display = 'none';
                 }
             });
             
@@ -687,11 +680,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!item.classList.contains('hidden')) {
                     visibleCount++;
                     if (visibleCount > maxVisible) {
-                        item.style.display = 'none';
+                        // Use class-based hiding for consistency with services grid
+                        item.classList.add('js-hidden');
                     } else {
-                        item.style.display = '';
-                        item.style.opacity = '';
-                        item.style.transform = '';
+                        // Ensure visible items don't have the hidden class
+                        item.classList.remove('js-hidden');
                     }
                 }
             });
@@ -721,17 +714,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Call initialization when page loads
-    if (servicesGrid) {
-        initializeServicesGrid();
-    }
-    
-    if (languageGrid) {
-        // Sort items first, then initialize
-        sortLanguageItems();
-        // Set initial mobile state for resize detection
-        languageGrid.dataset.isMobile = (window.innerWidth <= 768).toString();
-        initializeLanguageGrid();
-    }
+    // Use a small delay to ensure all elements are properly rendered
+    setTimeout(() => {
+        if (servicesGrid) {
+            initializeServicesGrid();
+        }
+        
+        if (languageGrid) {
+            // Sort items first, then initialize
+            sortLanguageItems();
+            // Set initial mobile state for resize detection
+            languageGrid.dataset.isMobile = (window.innerWidth <= 768).toString();
+            initializeLanguageGrid();
+        }
+    }, 100);
 
     // Handle window resize to update language grid with debouncing
     let resizeTimeout;
@@ -769,8 +765,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // First, reset all items to their default state
             languageItems.forEach(item => {
-                // Reset all display and animation properties
-                item.style.display = '';
+                // Reset all animation properties and remove JS hiding class
+                item.classList.remove('js-hidden');
                 item.style.opacity = '';
                 item.style.transform = '';
                 item.style.removeProperty('--item-delay');
@@ -782,8 +778,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
-                    // Hide filtered items
-                    item.style.display = 'none';
                 }
             });
             
@@ -796,13 +790,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!item.classList.contains('hidden')) {
                     displayedCount++;
                     if (displayedCount > maxVisible) {
-                        // Hide items beyond the max visible count
-                        item.style.display = 'none';
+                        // Use class-based hiding for consistency
+                        item.classList.add('js-hidden');
                     } else {
                         // Ensure visible items are properly displayed
-                        item.style.display = '';
-                        item.style.opacity = '';
-                        item.style.transform = '';
+                        item.classList.remove('js-hidden');
                     }
                 }
             });
