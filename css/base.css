@@ -77,7 +77,15 @@ html, body {
 
 /* Add top padding to account for fixed header */
 body {
-    padding-top: 120px; /* Approximate header height - will be adjusted by JavaScript */
+    padding-top: 120px !important; /* Approximate header height - will be adjusted by JavaScript */
+    /* Ensure no conflicting positioning */
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Ensure body padding is maintained */
+html body {
+    padding-top: 120px !important;
 }
 
 body {

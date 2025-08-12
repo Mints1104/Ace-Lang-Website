@@ -369,6 +369,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (header) {
             const headerHeight = header.offsetHeight;
             document.body.style.paddingTop = headerHeight + 'px';
+            
+            // Ensure header stays fixed
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.zIndex = '1000';
         }
     }
     
@@ -384,6 +389,12 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
+        }
+        
+        // Ensure header stays fixed during scroll
+        if (header) {
+            header.style.position = 'fixed';
+            header.style.top = '0';
         }
     });
 
