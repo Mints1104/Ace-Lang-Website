@@ -67,23 +67,48 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 
     // --- File Upload Handling ---
-    const fileInput = document.getElementById('documents');
-    const fileList = document.getElementById('fileList');
-    const fileLabel = document.querySelector('.file-label');
-    let selectedFiles = [];
+    // Handle all file inputs on the page
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    let selectedFilesMap = new Map(); // Map to store files for each input
 
-    // Ensure file label is clickable (backup for label association)
-    if (fileLabel && fileInput) {
-        fileLabel.addEventListener('click', function(e) {
-            // Prevent any default behavior that might interfere
-            e.preventDefault();
-            // Directly trigger the file input
-            fileInput.click();
-        });
+    // Initialize file handling for each file input
+    fileInputs.forEach(fileInput => {
+        const inputId = fileInput.id;
+        // Find the corresponding file list container
+        let fileList = null;
         
-        // Also ensure the label has proper styling
-        fileLabel.style.cursor = 'pointer';
-    }
+        // Look for file list with matching ID pattern or fallback to any file-list in the same form group
+        if (inputId === 'documents') {
+            fileList = document.getElementById('fileList');
+        } else if (inputId === 'cv') {
+            fileList = document.getElementById('fileList'); // careers.html uses fileList for CV
+        } else if (inputId === 'certificates') {
+            fileList = document.getElementById('certFileList');
+        } else {
+            // Fallback: look for any file-list in the same form group
+            fileList = fileInput.parentElement.querySelector('.file-list');
+        }
+        
+        if (fileList) {
+            // Initialize this file input's file storage
+            selectedFilesMap.set(inputId, []);
+            
+            // Make file label clickable
+            const fileLabel = fileInput.nextElementSibling;
+            if (fileLabel && fileLabel.classList.contains('file-label')) {
+                fileLabel.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    fileInput.click();
+                });
+                fileLabel.style.cursor = 'pointer';
+            }
+            
+            // Add change event listener
+            fileInput.addEventListener('change', function(e) {
+                handleFileChange(inputId, e.target.files, fileList);
+            });
+        }
+    });
 
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
@@ -127,10 +152,52 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    function updateFileList() {
+    function handleFileChange(inputId, files, fileList) {
+        const selectedFiles = selectedFilesMap.get(inputId) || [];
+        const newFiles = Array.from(files);
+        
+        newFiles.forEach(file => {
+            if (validateFile(file)) {
+                // Check if file already exists
+                const exists = selectedFiles.some(existingFile => 
+                    existingFile.name === file.name && existingFile.size === file.size
+                );
+                
+                if (!exists) {
+                    selectedFiles.push(file);
+                } else {
+                    showNotification(`File "${file.name}" is already selected.`, 'error');
+                }
+            }
+        });
+        
+        // Limit total files
+        if (selectedFiles.length > 5) {
+            showNotification('Maximum 5 files allowed. Please remove some files.', 'error');
+            selectedFiles.splice(5);
+        }
+        
+        // Update the map
+        selectedFilesMap.set(inputId, selectedFiles);
+        
+        // Update the file list display
+        updateFileList(inputId, selectedFiles, fileList);
+        
+        // Update the file input
+        const fileInput = document.getElementById(inputId);
+        if (fileInput) {
+            const dt = new DataTransfer();
+            selectedFiles.forEach(file => dt.items.add(file));
+            fileInput.files = dt.files;
+        }
+    }
+
+    function updateFileList(inputId, files, fileList) {
+        if (!fileList) return;
+        
         fileList.innerHTML = '';
         
-        selectedFiles.forEach((file, index) => {
+        files.forEach((file, index) => {
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item';
             
@@ -142,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="file-item-name">${file.name}</span>
                     <span class="file-item-size">(${formatFileSize(file.size)})</span>
                 </div>
-                <button type="button" class="file-remove" data-index="${index}" aria-label="Remove file">
+                <button type="button" class="file-remove" data-input="${inputId}" data-index="${index}" aria-label="Remove file">
                     <i class="fas fa-times"></i>
                 </button>
             `;
@@ -153,50 +220,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add event listeners to remove buttons
         fileList.querySelectorAll('.file-remove').forEach(button => {
             button.addEventListener('click', function() {
+                const inputId = this.dataset.input;
                 const index = parseInt(this.dataset.index);
+                const selectedFiles = selectedFilesMap.get(inputId) || [];
+                
                 selectedFiles.splice(index, 1);
-                updateFileList();
+                selectedFilesMap.set(inputId, selectedFiles);
+                
+                // Update the display
+                updateFileList(inputId, selectedFiles, fileList);
                 
                 // Update the file input
-                const dt = new DataTransfer();
-                selectedFiles.forEach(file => dt.items.add(file));
-                fileInput.files = dt.files;
-            });
-        });
-    }
-
-    // File input change handler
-    if (fileInput) {
-        fileInput.addEventListener('change', function(e) {
-            const files = Array.from(e.target.files);
-            
-            files.forEach(file => {
-                if (validateFile(file)) {
-                    // Check if file already exists
-                    const exists = selectedFiles.some(existingFile => 
-                        existingFile.name === file.name && existingFile.size === file.size
-                    );
-                    
-                    if (!exists) {
-                        selectedFiles.push(file);
-                    } else {
-                        showNotification(`File "${file.name}" is already selected.`, 'error');
-                    }
+                const fileInput = document.getElementById(inputId);
+                if (fileInput) {
+                    const dt = new DataTransfer();
+                    selectedFiles.forEach(file => dt.items.add(file));
+                    fileInput.files = dt.files;
                 }
             });
-            
-            // Limit total files
-            if (selectedFiles.length > 5) {
-                showNotification('Maximum 5 files allowed. Please remove some files.', 'error');
-                selectedFiles = selectedFiles.slice(0, 5);
-            }
-            
-            updateFileList();
-            
-            // Update the file input
-            const dt = new DataTransfer();
-            selectedFiles.forEach(file => dt.items.add(file));
-            fileInput.files = dt.files;
         });
     }
 
@@ -319,8 +360,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     showNotification('Thank you for your message! We will get back to you soon.', 'success');
                     contactForm.reset();
                     // Reset file upload
-                    selectedFiles = [];
-                    updateFileList();
+                    selectedFilesMap.clear(); // Clear all files
+                    // Clear all file lists
+                    document.querySelectorAll('.file-list').forEach(fileList => {
+                        fileList.innerHTML = '';
+                    });
                     // Remove any error styling and success states
                     inputs.forEach(input => {
                         input.classList.remove('error');

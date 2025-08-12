@@ -431,57 +431,5 @@
     </a>
 
     <script src="script.js"></script>
-    <script>
-        // File upload handling
-        document.addEventListener('DOMContentLoaded', function() {
-            const cvInput = document.getElementById('cv');
-            const certInput = document.getElementById('certificates');
-            const cvFileList = document.getElementById('fileList');
-            const certFileList = document.getElementById('certFileList');
-            
-            // Get the file labels for click handling
-            const cvLabel = cvInput.nextElementSibling;
-            const certLabel = certInput.nextElementSibling;
-
-            // Make file labels clickable
-            if (cvLabel && cvLabel.classList.contains('file-label')) {
-                cvLabel.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    cvInput.click();
-                });
-                cvLabel.style.cursor = 'pointer';
-            }
-            
-            if (certLabel && certLabel.classList.contains('file-label')) {
-                certLabel.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    certInput.click();
-                });
-                certLabel.style.cursor = 'pointer';
-            }
-
-            function handleFileSelect(input, fileListElement) {
-                const files = input.files;
-                fileListElement.innerHTML = '';
-                
-                if (files.length > 0) {
-                    for (let i = 0; i < files.length; i++) {
-                        const file = files[i];
-                        const fileItem = document.createElement('div');
-                        fileItem.className = 'file-item';
-                        fileItem.innerHTML = `
-                            <i class="fas fa-file"></i>
-                            <span>${file.name}</span>
-                            <small>(${(file.size / 1024 / 1024).toFixed(2)} MB)</small>
-                        `;
-                        fileListElement.appendChild(fileItem);
-                    }
-                }
-            }
-
-            cvInput.addEventListener('change', () => handleFileSelect(cvInput, cvFileList));
-            certInput.addEventListener('change', () => handleFileSelect(certInput, certFileList));
-        });
-    </script>
 </body>
 </html>
