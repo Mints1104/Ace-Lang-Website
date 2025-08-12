@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure file label is clickable (backup for label association)
     if (fileLabel && fileInput) {
         fileLabel.addEventListener('click', function(e) {
-            console.log('File label clicked');
             // Prevent any default behavior that might interfere
             e.preventDefault();
             // Directly trigger the file input
@@ -84,9 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Also ensure the label has proper styling
         fileLabel.style.cursor = 'pointer';
-        console.log('File upload handlers attached');
-    } else {
-        console.log('File input or label not found:', { fileInput, fileLabel });
     }
 
     function formatFileSize(bytes) {

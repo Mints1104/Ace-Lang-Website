@@ -75,6 +75,28 @@
     <priority>0.7</priority>
   </url>
   
+  <!-- Additional Language Pages -->
+  <url>
+    <loc>https://www.acelang.com/kurdish-translation-services.html</loc>
+    <lastmod>2025-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.acelang.com/amharic-translation-services.html</loc>
+    <lastmod>2025-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    </url>
+  
+  <url>
+    <loc>https://www.acelang.com/vietnamese-translation-services.html</loc>
+    <lastmod>2025-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- Location-specific pages -->
   <url>
     <loc>https://www.acelang.com/translation-services-cardiff.html</loc>

@@ -83,6 +83,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- Mobile burger menu button -->
+                <div class="burger-menu">
+                    <div class="burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
             
             <div class="header-bottom">
@@ -92,12 +100,43 @@
                         <li><a href="index.html#services">Our Services</a></li>
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
                     </ul>
                 </nav>
                 <a href="#contact" class="cta-button">Get a Quote</a>
             </div>
         </div>
     </header>
+
+    <!-- Mobile sidebar navigation -->
+    <div class="mobile-sidebar">
+        <div class="sidebar-header">
+            <h3>Ace Language Services</h3>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Our Services</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-contact">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+441633266201" class="phone-link">+44 1633 266 201</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@acelang.com" class="email-link">info@acelang.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -180,100 +219,107 @@
         </div>
     </section>
 
-    <!-- Welsh Language Context -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-title">Supporting Bilingual Wales</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Welsh (Cymraeg) is an official language of Wales alongside English, with over 900,000 Welsh speakers across the country. The Welsh Language Act and subsequent legislation requires public sector organizations to provide bilingual services, creating significant demand for professional Welsh translation services.</p>
-                    <p>Our Welsh translation team understands the unique linguistic and cultural aspects of the Welsh language, including regional variations, formal and informal registers, and the specific terminology used in government, business, and legal contexts. We support Wales' bilingual future by providing accurate, culturally appropriate translations that respect the dignity and status of the Welsh language.</p>
-                    
-                    <h3>Welsh Translation Requirements in Wales:</h3>
-                    <ul style="list-style: disc; margin-left: 2rem; line-height: 1.8;">
-                        <li>Welsh Government bilingual policy compliance</li>
-                        <li>Local council bilingual communications</li>
-                        <li>NHS Wales patient information and signage</li>
-                        <li>Court proceedings and legal documentation</li>
-                        <li>Education materials for Welsh-medium schools</li>
-                        <li>Business compliance with Welsh language standards</li>
-                        <li>Tourism and heritage site materials</li>
-                        <li>Public sector procurement documents</li>
-                    </ul>
-                    
-                    <h3>Organizations We Serve:</h3>
-                    <div style="margin-top: 1.5rem;">
-                        <p><strong>Welsh Government:</strong> Departmental communications, policy documents, and public information materials.</p>
-                        <p><strong>Local Councils:</strong> Cardiff, Newport, Swansea, and other Welsh councils requiring bilingual documentation.</p>
-                        <p><strong>NHS Wales:</strong> Patient information, medical forms, and healthcare communications.</p>
-                        <p><strong>Education:</strong> Cardiff University, Bangor University, and Welsh schools with Welsh-medium education.</p>
-                        <p><strong>Legal:</strong> Welsh courts, solicitors, and barristers requiring certified Welsh translations.</p>
-                        <p><strong>Business:</strong> Companies operating in Wales needing bilingual marketing and compliance materials.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
+
+        <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get Your Welsh Translation Quote Today</h2>
+            <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <h3>Request Welsh Translation Services</h3>
-                    <p>Contact us for professional Welsh (Cymraeg) translation services supporting bilingual Wales. We serve all sectors across Cardiff, Newport, Swansea, and throughout Wales.</p>
+                    <form class="contact-form" id="contactForm" data-netlify="true" name="contact">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Name *</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email *</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" ">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                            <label for="message">Message *</label>
+                        </div>
+                        <div class="form-group file-upload-group">
+                            <input type="file" id="documents" name="documents" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" class="file-input">
+                            <div class="file-label">
+                                <i class="fas fa-paperclip"></i>
+                                <span class="file-text">Attach Documents (Optional)</span>
+                                <span class="file-info">PDF, Word, Text, or Images</span>
+                            </div>
+                            <div class="file-list" id="fileList"></div>
+                        </div>
+                        <input type="hidden" name="form-name" value="contact" />
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info-container">
                     <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p><a href="https://maps.google.com/?q=2-4+Chepstow+Rd+Newport+NP19+8EA" target="_blank" class="address-link">2-4 Chepstow Rd<br>Newport, NP19 8EA</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Opening Hours</h3>
+                                <div class="hours">
+                                    <div class="hours-row">
+                                        <span>Monday - Friday:</span>
+                                        <span>8:30 AM - 6:30 PM</span>
+                                    </div>
+                                    <div class="hours-row">
+                                        <span>Saturday:</span>
+                                        <span>8:30 AM - 1:00 PM</span>
+                                    </div>
+                                    <div class="hours-row">
+                                        <span>Sunday:</span>
+                                        <span>Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <h4>Call Us</h4>
+                                <h3>Phone</h3>
                                 <p><a href="tel:+441633266201" class="phone-link">+44 1633 266 201</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <h4>Email Us</h4>
+                                <h3>Email</h3>
                                 <p><a href="mailto:info@acelang.com" class="email-link">info@acelang.com</a></p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Visit Us</h4>
-                                <p>2-4 Chepstow Rd<br>Newport, NP19 8EA<br>Wales</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="contact-info-container">
-                    <h3>Welsh Translation Expertise</h3>
-                    <div class="service-areas" style="margin-top: 1rem;">
-                        <h4>Welsh Regions We Serve:</h4>
-                        <p>• Cardiff (Caerdydd)<br>
-                        • Newport (Casnewydd)<br>
-                        • Swansea (Abertawe)<br>
-                        • Wrexham (Wrecsam)<br>
-                        • Bangor<br>
-                        • Aberystwyth<br>
-                        • All of Wales (Cymru)</p>
-                        
-                        <h4 style="margin-top: 1.5rem;">Document Types:</h4>
-                        <p>• Government policy documents<br>
-                        • Legal contracts and court papers<br>
-                        • Educational materials and curricula<br>
-                        • Marketing and promotional materials<br>
-                        • Website content and apps<br>
-                        • Medical and healthcare information</p>
-                        
-                        <h4 style="margin-top: 1.5rem;">Welsh Language Standards:</h4>
-                        <p>• Compliant with Welsh Government style guides<br>
-                        • Understanding of formal/informal registers<br>
-                        • Regional dialect awareness<br>
-                        • Cultural sensitivity and accuracy</p>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h3>Find Us</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.1234567890123!2d-2.9892787!3d51.5909873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871e6c493168339%3A0x8830c98df5ed52b3!2sAce%20Language%20Services!5e0!3m2!1sen!2suk!4v1701292800000!5m2!1sen!2suk"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -293,6 +339,7 @@
                         <li><a href="index.html#services">Services</a></li>
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

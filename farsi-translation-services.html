@@ -82,6 +82,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- Mobile burger menu button -->
+                <div class="burger-menu">
+                    <div class="burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
             
             <div class="header-bottom">
@@ -91,12 +99,43 @@
                         <li><a href="index.html#services">Our Services</a></li>
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
                     </ul>
                 </nav>
                 <a href="#contact" class="cta-button">Get a Quote</a>
             </div>
         </div>
     </header>
+
+    <!-- Mobile sidebar navigation -->
+    <div class="mobile-sidebar">
+        <div class="sidebar-header">
+            <h3>Ace Language Services</h3>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Our Services</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-contact">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+441633266201" class="phone-link">+44 1633 266 201</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@acelang.com" class="email-link">info@acelang.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -181,96 +220,107 @@
         </div>
     </section>
 
-    <!-- Persian Community Context -->
-    <section class="about">
-        <div class="container">
-            <h2 class="section-title">Supporting Persian-Speaking Communities in Wales</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Wales is home to growing Iranian and Afghan communities, particularly in Cardiff, Newport, and Swansea. Many are highly educated professionals, students, or asylum seekers requiring specialized translation services that understand both the linguistic nuances and cultural context of Persian languages.</p>
-                    <p>Our Farsi translation team includes native speakers from Iran and Afghanistan with deep understanding of regional dialects, formal and colloquial registers, and the specific terminology used in legal, medical, and academic contexts. We provide culturally sensitive services that respect the dignity and heritage of Persian-speaking clients.</p>
-                    
-                    <h3>Common Farsi Translation Needs in Wales:</h3>
-                    <ul style="list-style: disc; margin-left: 2rem; line-height: 1.8;">
-                        <li>Asylum and immigration documentation</li>
-                        <li>Academic transcripts from Iranian universities</li>
-                        <li>Medical records and mental health assessments</li>
-                        <li>Birth certificates and family documents</li>
-                        <li>Legal contracts and court proceedings</li>
-                        <li>Professional qualification certificates</li>
-                        <li>Religious and cultural documents</li>
-                        <li>Business and employment documents</li>
-                    </ul>
-                    
-                    <h3>Persian-Speaking Communities We Serve:</h3>
-                    <div style="margin-top: 1.5rem;">
-                        <p><strong>Iranian Professionals:</strong> Doctors, engineers, and academics seeking professional recognition and employment in Wales.</p>
-                        <p><strong>Afghan Refugees:</strong> Recent arrivals requiring comprehensive document translation and interpretation for resettlement services.</p>
-                        <p><strong>Students:</strong> Iranian and Afghan students applying to Cardiff University, Swansea University, and other Welsh institutions.</p>
-                        <p><strong>Families:</strong> Persian-speaking families accessing healthcare, education, and social services throughout Wales.</p>
-                        <p><strong>Business Community:</strong> Iranian entrepreneurs and businesses establishing operations in Wales.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
+
+        <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get Your Farsi Translation Quote Today</h2>
+            <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <h3>Request Farsi (Persian) Translation Services</h3>
-                    <p>Professional and culturally sensitive Farsi translation services for Iranian and Afghan communities in Wales. Confidential, accurate, and respectful service.</p>
+                    <form class="contact-form" id="contactForm" data-netlify="true" name="contact">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Name *</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email *</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" ">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                            <label for="message">Message *</label>
+                        </div>
+                        <div class="form-group file-upload-group">
+                            <input type="file" id="documents" name="documents" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" class="file-input">
+                            <div class="file-label">
+                                <i class="fas fa-paperclip"></i>
+                                <span class="file-text">Attach Documents (Optional)</span>
+                                <span class="file-info">PDF, Word, Text, or Images</span>
+                            </div>
+                            <div class="file-list" id="fileList"></div>
+                        </div>
+                        <input type="hidden" name="form-name" value="contact" />
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info-container">
                     <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p><a href="https://maps.google.com/?q=2-4+Chepstow+Rd+Newport+NP19+8EA" target="_blank" class="address-link">2-4 Chepstow Rd<br>Newport, NP19 8EA</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Opening Hours</h3>
+                                <div class="hours">
+                                    <div class="hours-row">
+                                        <span>Monday - Friday:</span>
+                                        <span>8:30 AM - 6:30 PM</span>
+                                    </div>
+                                    <div class="hours-row">
+                                        <span>Saturday:</span>
+                                        <span>8:30 AM - 1:00 PM</span>
+                                    </div>
+                                    <div class="hours-row">
+                                        <span>Sunday:</span>
+                                        <span>Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <h4>Call Us</h4>
+                                <h3>Phone</h3>
                                 <p><a href="tel:+441633266201" class="phone-link">+44 1633 266 201</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <h4>Email Us</h4>
+                                <h3>Email</h3>
                                 <p><a href="mailto:info@acelang.com" class="email-link">info@acelang.com</a></p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Visit Us</h4>
-                                <p>2-4 Chepstow Rd<br>Newport, NP19 8EA<br>Wales</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="contact-info-container">
-                    <h3>Farsi Translation Specialties</h3>
-                    <div class="service-areas" style="margin-top: 1rem;">
-                        <h4>Language Variants:</h4>
-                        <p>• Modern Persian (Iran)<br>
-                        • Dari (Afghanistan)<br>
-                        • Tajik (Central Asian Persian)<br>
-                        • Classical Persian<br>
-                        • Regional dialects</p>
-                        
-                        <h4 style="margin-top: 1.5rem;">Document Types:</h4>
-                        <p>• Asylum and immigration papers<br>
-                        • Academic transcripts and diplomas<br>
-                        • Medical and psychiatric reports<br>
-                        • Legal contracts and court documents<br>
-                        • Religious and cultural certificates</p>
-                        
-                        <h4 style="margin-top: 1.5rem;">Cultural Sensitivity:</h4>
-                        <p>• Understanding of Iranian culture<br>
-                        • Awareness of Afghan traditions<br>
-                        • Respectful handling of personal documents<br>
-                        • Support for vulnerable clients</p>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h3>Find Us</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.1234567890123!2d-2.9892787!3d51.5909873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871e6c493168339%3A0x8830c98df5ed52b3!2sAce%20Language%20Services!5e0!3m2!1sen!2suk!4v1701292800000!5m2!1sen!2suk"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -290,6 +340,7 @@
                         <li><a href="index.html#services">Services</a></li>
                         <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

@@ -67,3 +67,105 @@
     color: #4a5568;
     line-height: 1.6;
 }
+
+/* Careers Page Feature Styles */
+.features-section {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+}
+
+.features-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    text-align: left;
+}
+
+.feature-list li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Benefits Section for Careers */
+.about-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.about-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.benefit-item i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    background: white;
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.benefit-item div {
+    flex: 1;
+}
+
+.benefit-item h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.benefit-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .benefit-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .benefit-item i {
+        margin: 0 auto 1rem auto;
+    }
+}

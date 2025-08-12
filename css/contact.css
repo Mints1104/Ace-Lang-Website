@@ -453,3 +453,197 @@
     visibility: visible !important;
     opacity: 1 !important;
 }
+
+/* Careers Page Form Styles */
+.contact {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+}
+
+.contact .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.contact .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Careers Form Styling - Exclude file uploads */
+.contact .form-group:not(.file-upload-group) label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: static;
+    top: auto;
+    left: auto;
+    background: none;
+    padding: 0;
+    letter-spacing: normal;
+    transform: none;
+}
+
+.contact .form-group:not(.file-upload-group) input,
+.contact .form-group textarea,
+.contact .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    background: white;
+    font-family: inherit;
+}
+
+.contact .form-group:not(.file-upload-group) input:focus,
+.contact .form-group textarea:focus,
+.contact .form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.contact .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+
+
+
+
+
+
+.contact .submit-btn {
+    background: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.contact .submit-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+
+
+@media (max-width: 768px) {
+    .contact .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Careers Contact Info Container */
+.contact .contact-info-container {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact .contact-item i {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    background: var(--bg-secondary);
+    padding: 0.75rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.contact .contact-item h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contact .contact-item p {
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact .contact-item a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+.contact .contact-item a:hover {
+    color: var(--accent-dark);
+}
+
+.contact .hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.contact .hours-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Careers Map Section */
+.contact + .map-section {
+    padding: 3rem 0;
+    background: white;
+}
+
+.contact + .map-section h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.contact + .map-section .map-container {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .contact .hours-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
