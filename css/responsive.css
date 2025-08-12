@@ -2,6 +2,17 @@
 /* Media queries for tablet and mobile layouts. Adjusts grid, font sizes, and spacing. */
 @media (max-width: 768px) {
     /* Header styles are now handled in header.css */
+    
+    /* Mobile body padding adjustment for fixed header */
+    body {
+        padding-top: 80px !important; /* Reduced padding for mobile header */
+    }
+    
+    /* Mobile hero adjustments to eliminate gaps */
+    .hero {
+        padding: clamp(2rem, 6vh, 4rem) 0; /* Reduced top/bottom padding on mobile */
+        margin-top: 0; /* Ensure no top margin */
+    }
 
     .hero h2 {
         font-size: 2rem;
@@ -162,6 +173,17 @@
 }
 
 @media (max-width: 480px) {
+    /* Very small mobile body padding adjustment for fixed header */
+    body {
+        padding-top: 60px !important; /* Minimal padding for very small mobile header */
+    }
+    
+    /* Very small mobile hero adjustments */
+    .hero {
+        padding: clamp(1.5rem, 5vh, 3rem) 0; /* Minimal padding for very small screens */
+        margin-top: 0; /* Ensure no top margin */
+    }
+    
     .hero h2 {
         font-size: 1.5rem;
     }
@@ -245,6 +267,13 @@
 
     .quick-contact-mobile i {
         font-size: 1.2rem;
+    }
+}
+
+/* Tablet body padding adjustment */
+@media (max-width: 1024px) and (min-width: 769px) {
+    body {
+        padding-top: 100px !important; /* Medium padding for tablet header */
     }
 }
 

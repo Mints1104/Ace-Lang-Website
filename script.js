@@ -412,7 +412,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateBodyPadding() {
         if (header) {
             const headerHeight = header.offsetHeight;
-            document.body.style.paddingTop = headerHeight + 'px';
+            const windowWidth = window.innerWidth;
+            
+            // Let CSS handle the padding on mobile/tablet for better performance
+            // Only apply JavaScript padding on desktop where we need precise control
+            if (windowWidth > 1024) {
+                document.body.style.paddingTop = headerHeight + 'px';
+            } else {
+                // Remove inline padding to let CSS media queries handle it
+                document.body.style.paddingTop = '';
+            }
             
             // Ensure header stays fixed
             header.style.position = 'fixed';

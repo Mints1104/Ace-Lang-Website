@@ -709,6 +709,180 @@
     gap: var(--spacing-lg);
 }
 
+/* FAQ Section */
+.faq-section {
+    padding: var(--spacing-2xl) 0;
+    background: var(--bg-primary);
+}
+
+.faq-section .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.faq-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
+}
+
+.faq-question {
+    margin: 0;
+}
+
+.faq-toggle {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: none;
+    padding: var(--spacing-lg);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all var(--transition-normal);
+}
+
+.faq-toggle:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.faq-toggle:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.faq-toggle i {
+    transition: transform var(--transition-normal);
+}
+
+.faq-toggle[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 var(--spacing-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    background: var(--bg-primary);
+}
+
+.faq-answer[aria-hidden="false"] {
+    padding: var(--spacing-lg);
+    max-height: 500px;
+}
+
+.faq-answer p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Related Services Section */
+.related-services {
+    padding: var(--spacing-2xl) 0;
+    background: var(--bg-secondary);
+}
+
+.related-services .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.related-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.related-service-card {
+    background: var(--bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-color);
+}
+
+.related-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
+}
+
+.related-service-card h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.related-service-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.related-service-card li {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+}
+
+.related-service-card li:hover {
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+}
+
+.related-service-card a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-normal);
+    display: block;
+    padding: var(--spacing-xs) 0;
+}
+
+.related-service-card a:hover {
+    color: var(--accent-color);
+}
+
+.related-service-card a:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .language-category {
@@ -718,5 +892,18 @@
     .language-showcase .grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
+    }
+    
+    .related-services {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .related-services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .related-service-card {
+        padding: var(--spacing-lg);
     }
 }
