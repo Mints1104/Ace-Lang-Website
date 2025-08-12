@@ -53,8 +53,9 @@
     .service-item {
         padding: var(--spacing-md);
         /* Reduced padding for mobile */
-        text-align: left;
+        text-align: center;
         display: flex;
+        flex-direction: column;
         align-items: center;
         gap: var(--spacing-md);
     }
@@ -68,14 +69,15 @@
     .service-item h3 {
         font-size: 1rem;
         margin-bottom: 0;
-        text-align: left;
+        text-align: center;
     }
 
     .language-item {
         padding: var(--spacing-sm);
         /* Reduced padding for mobile */
-        text-align: left;
+        text-align: center;
         display: flex;
+        flex-direction: column;
         align-items: center;
         gap: var(--spacing-sm);
     }
@@ -89,7 +91,7 @@
     .language-item h4 {
         font-size: 0.9rem;
         margin-bottom: 0;
-        text-align: left;
+        text-align: center;
     }
 
     /* Add quick contact button for mobile */
@@ -144,13 +146,8 @@
         /* Less padding on mobile */
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
+    /* Heading sizes are now handled by the main CSS files */
+    /* Removed conflicting h1, h2 rules that were overriding section titles */
 
     .hero {
         padding: 4rem 0;

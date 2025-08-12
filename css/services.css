@@ -99,24 +99,26 @@
     margin-bottom: 0;
     flex: 1;
     position: relative;
-    /* Ensure these titles are still centered even in flex containers */
-    text-align: center !important;
-    width: 100% !important;
+    text-align: center;
+    width: 100%;
 }
 
-/* UNIFIED SECTION TITLE STYLING - All section titles should look the same */
+/* CLEAN HEADING HIERARCHY - No more conflicts */
+/* Main section titles (Our Products & Services, Language Translation Services, etc.) */
 .section-title,
-.language-section-title {
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--text-primary) !important;
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    position: relative !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 100% !important;
-    display: block !important;
+.language-section-title,
+h2.section-title,
+h3.language-section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: block;
 }
 
 /* Map section title styling */
@@ -124,35 +126,26 @@
     margin-bottom: var(--spacing-lg);
 }
 
-/* Ensure all h2 and h3 section titles are consistent */
-h2.section-title,
-h3.language-section-title {
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--text-primary) !important;
-    font-size: 2rem !important;
-    font-weight: 700 !important;
-    position: relative !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 100% !important;
-    display: block !important;
-}
-
-/* Regular h3 headings in specific content sections (like "First Class Service", "Phone", "Email", etc.) */
+/* Content section h3 headings (First Class Service, Phone, Email, etc.) */
 .services h3:not(.language-section-title),
 .language-services h3:not(.language-section-title),
 .about-section h3:not(.language-section-title),
 .contact-section h3:not(.language-section-title) {
-    text-align: center !important;
-    margin-bottom: var(--spacing-lg) !important;
-    color: var(--text-primary) !important;
-    font-size: 1.5rem !important;
-    /* Smaller than section titles but still prominent */
-    font-weight: 600 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 100% !important;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Ensure footer headings are NOT affected by content heading rules */
+.footer h3,
+.footer-section h3 {
+    /* Footer styles are handled in footer.css */
+    /* This prevents our content heading rules from overriding footer styles */
 }
 
 
@@ -277,6 +270,28 @@ h3.language-section-title {
     /* Show subtle collapse controls on mobile */
     .collapse-toggle {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 40px;
+        padding: 8px 16px;
+    }
+
+    /* Ensure proper button alignment on mobile */
+    .language-controls {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .region-filter {
+        min-width: 120px;
+        height: 40px;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-shrink: 0;
     }
 
     /* Remove nth-child rules - let JavaScript handle visibility */
@@ -364,19 +379,31 @@ h3.language-section-title {
         gap: var(--spacing-xs);
         margin-top: var(--spacing-sm);
         margin-bottom: var(--spacing-sm);
+        justify-content: center;
+        align-items: center;
     }
 
     .region-filter {
-        min-width: 100px;
-        /* Even narrower on very small screens */
+        min-width: 90px;
         font-size: 0.8rem;
-        /* Smaller text to fit better */
+        padding: 8px 16px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-shrink: 0;
     }
 
     .collapse-toggle {
         font-size: 0.8rem;
-        /* Smaller text to fit better */
-        padding: var(--spacing-xs) var(--spacing-sm);
+        padding: 8px 16px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-shrink: 0;
     }
 
     /* Language section title styling is now handled by unified rules above */
@@ -407,6 +434,13 @@ h3.language-section-title {
     height: 3px;
     background: var(--accent-color);
     border-radius: 2px;
+}
+
+/* Hide ::after pseudo-element on mobile to prevent collision with buttons */
+@media (max-width: 768px) {
+    .language-section-title::after {
+        display: none;
+    }
 }
 
 /* Language controls styling */
@@ -1017,13 +1051,13 @@ h3.language-section-title {
         /* Make it narrower so both buttons fit */
         width: auto;
         text-align: center;
-        line-height: 1 !important;
+        line-height: 1;
         /* Force consistent line height */
-        vertical-align: middle !important;
+        vertical-align: middle;
         /* Force vertical alignment */
-        display: flex !important;
+        display: flex;
         /* Force flex display */
-        align-items: center !important;
+        align-items: center;
         /* Force vertical centering */
         height: 40px;
         /* Force consistent height */
@@ -1039,13 +1073,13 @@ h3.language-section-title {
         /* Ensure text is vertically centered */
         text-align: center;
         /* Ensure text is horizontally centered */
-        line-height: 1 !important;
+        line-height: 1;
         /* Force consistent line height */
-        vertical-align: middle !important;
+        vertical-align: middle;
         /* Force vertical alignment */
-        display: flex !important;
+        display: flex;
         /* Force flex display */
-        align-items: center !important;
+        align-items: center;
         /* Force vertical centering */
         height: 40px;
         /* Force consistent height */
