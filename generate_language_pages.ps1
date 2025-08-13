@@ -1,13 +1,18 @@
-# PowerShell script to generate 5 new high-impact language pages
+# PowerShell script to generate 10 new high-impact language pages
 # Based on the French translation services template - FIXED VERSION
 # Languages selected from index.html that are supported but missing
 
 $languages = @(
-    @{Name = "Oromo"; Native = "Oromo"; Region = "african" },
-    @{Name = "Tigrinya"; Native = "Tigrinya"; Region = "african" },
-    @{Name = "Amharic"; Native = "Amharic"; Region = "african" },
-    @{Name = "Nuer"; Native = "Nuer"; Region = "african" },
-    @{Name = "Lingala"; Native = "Lingala"; Region = "african" }
+    @{Name = "Otjiherero"; Native = "Otjiherero"; Region = "african" },
+    @{Name = "Runyankore"; Native = "Runyankore"; Region = "african" },
+    @{Name = "Rukiga"; Native = "Rukiga"; Region = "african" },
+    @{Name = "Sudanese"; Native = "Sudanese"; Region = "african" },
+    @{Name = "Yoruba"; Native = "Yoruba"; Region = "african" },
+    @{Name = "Pidgin"; Native = "Pidgin"; Region = "african" },
+    @{Name = "Fula"; Native = "Fula"; Region = "african" },
+    @{Name = "Igbo"; Native = "Igbo"; Region = "african" },
+    @{Name = "Bambara"; Native = "Bambara"; Region = "african" },
+    @{Name = "Krio"; Native = "Krio"; Region = "african" }
 )
 
 $templateFile = "languages/french-translation-services.html"
@@ -129,7 +134,7 @@ foreach ($lang in $languages) {
     Write-Host "Created: $outputFile"
 }
 
-Write-Host "`nAll 5 new language pages have been generated successfully!"
+Write-Host "`nAll 10 new language pages have been generated successfully!"
 Write-Host "Generated pages:"
 foreach ($lang in $languages) {
     Write-Host "- $($lang.Name) ($($lang.Native))"
