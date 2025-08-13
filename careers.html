@@ -244,69 +244,48 @@
             <h2 class="section-title">Apply Now</h2>
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <form class="contact-form" id="careerForm" data-netlify="true" name="career">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                                        <form class="contact-form" id="contactForm" data-netlify="true" name="contact" novalidate>
+                        <div class="form-group" data-field="name">
+                            <input type="text" id="name" name="name" minlength="2" maxlength="100" pattern="[A-Za-z\s\-']+" aria-describedby="name-error" autocomplete="name" required>
+                            <label for="name">Name *</label>
+                            <div id="name-error" class="field-error" role="alert" aria-live="polite"></div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="form-group" data-field="email">
+                            <input type="email" id="email" name="email" minlength="5" maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-describedby="email-error" autocomplete="email" required>
+                            <label for="email">Email *</label>
+                            <div id="email-error" class="field-error" role="alert" aria-live="polite"></div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                        <div class="form-group" data-field="phone">
+                            <input type="tel" id="phone" name="phone" minlength="10" maxlength="20" pattern="[\+]?[0-9\s\-\(\)]+" aria-describedby="phone-error" autocomplete="tel">
+                            <label for="phone">Phone</label>
+                            <div id="phone-error" class="field-error" role="alert" aria-live="polite"></div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="position">Position Applied For *</label>
-                            <select id="position" name="position" required>
-                                <option value="">Select Position</option>
-                                <option value="translator">Professional Translator</option>
-                                <option value="interpreter">Interpreter</option>
-                                <option value="certified-translator">Certified Translator</option>
-                            </select>
+                        <div class="form-group" data-field="message">
+                            <textarea id="message" name="message" rows="5" minlength="10" maxlength="1000" aria-describedby="message-error" autocomplete="off" required></textarea>
+                            <label for="message">Message *</label>
+                            <div id="message-error" class="field-error" role="alert" aria-live="polite"></div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="languages">Languages *</label>
-                            <input type="text" id="languages" name="languages" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="experience">Relevant Experience & Qualifications *</label>
-                            <textarea id="experience" name="experience" rows="4" required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="availability">Availability & Preferred Working Hours *</label>
-                            <textarea id="availability" name="availability" rows="3" required></textarea>
-                        </div>
-                        
                         <div class="form-group file-upload-group">
-                            <input type="file" id="cv" name="cv" multiple accept=".pdf,.doc,.docx" class="file-input" required>
+                            <input type="file" id="documents" name="documents" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" class="file-input">
                             <div class="file-label">
                                 <i class="fas fa-paperclip"></i>
-                                <span class="file-text">Upload CV/Resume *</span>
-                                <span class="file-info">PDF or Word documents only</span>
+                                <span class="file-text">Attach Documents (Optional)</span>
+                                <span class="file-info">PDF, Word, Text, or Images</span>
                             </div>
                             <div class="file-list" id="fileList"></div>
                         </div>
-                        
-                        <div class="form-group file-upload-group">
-                            <input type="file" id="certificates" name="certificates" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="file-input">
-                            <div class="file-label">
-                                <i class="fas fa-certificate"></i>
-                                <span class="file-text">Certificates & Qualifications (Optional)</span>
-                                <span class="file-info">PDF, Word, or Images</span>
-                            </div>
-                            <div class="file-list" id="certFileList"></div>
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></div>
+                        <div class="form-help">
+                            <p><i class="fas fa-info-circle"></i> Fields marked with * are required. We typically respond within 24 hours.</p>
                         </div>
-                        
-                        <input type="hidden" name="form-name" value="career" />
-                        <button type="submit" class="submit-btn">Submit Application</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" aria-hidden="true">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Sending...
+                            </span>
+                        </button>
                     </form>
                 </div>
                 

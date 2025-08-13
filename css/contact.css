@@ -124,7 +124,8 @@
     gap: var(--spacing-xs);
 }
 
-.field-error::before {
+/* Only show warning emoji when there's actual error content */
+.field-error:not(:empty)::before {
     content: '⚠️';
     font-size: 0.75rem;
 }
