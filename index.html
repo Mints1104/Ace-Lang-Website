@@ -1075,21 +1075,51 @@
             <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm" data-netlify="true" name="contact">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder=" " required>
-                            <label for="name">Name *</label>
+                    <form class="contact-form" id="contactForm" data-netlify="true" name="contact" novalidate>
+                        <div class="form-group" data-field="name">
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder=" " 
+                                required 
+                                minlength="2"
+                                maxlength="100"
+                                autocomplete="name">
+                                                            <label for="name">Full Name *</label>
+                            </div>
+                        <div class="form-group" data-field="email">
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder=" " 
+                                required 
+                                maxlength="254"
+                                autocomplete="email">
+                                                            <label for="email">Email Address *</label>
+                            </div>
+                        <div class="form-group" data-field="phone">
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder=" " 
+                                pattern="[\+]?[0-9\s\-\(\)]{10,20}"
+                                maxlength="20"
+                                autocomplete="tel">
+                            <label for="phone">Phone Number (Optional)</label>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder=" " required>
-                            <label for="email">Email *</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder=" ">
-                            <label for="phone">Phone</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                        <div class="form-group" data-field="message">
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="5" 
+                                placeholder=" " 
+                                required 
+                                minlength="10"
+                                maxlength="2000"
+                                ></textarea>
                             <label for="message">Message *</label>
                         </div>
                         <div class="form-group file-upload-group">
@@ -1102,7 +1132,17 @@
                             <div class="file-list" id="fileList"></div>
                         </div>
                         <input type="hidden" name="form-name" value="contact" />
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" aria-hidden="true">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Sending...
+                            </span>
+                        </button>
+                        <div class="form-help">
+                            <p><i class="fas fa-info-circle"></i> Fields marked with * are required. We typically respond within 24 hours.</p>
+                        </div>
                     </form>
                 </div>
                 <div class="contact-info-container">

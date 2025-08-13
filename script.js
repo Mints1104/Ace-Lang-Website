@@ -241,28 +241,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced form validation
+    // Enhanced form validation with comprehensive rules
     function validateForm(formData) {
         const errors = [];
-        const name = formData.get('name').trim();
-        const email = formData.get('email').trim();
-        const message = formData.get('message').trim();
+        const name = formData.get('name')?.trim() || '';
+        const email = formData.get('email')?.trim() || '';
+        const phone = formData.get('phone')?.trim() || '';
+        const message = formData.get('message')?.trim() || '';
 
-        if (!name || name.length < 2) {
-            errors.push('Name must be at least 2 characters long');
+        // Name validation
+        if (!name) {
+            errors.push({ field: 'name', message: 'Name is required' });
+        } else if (name.length < 2) {
+            errors.push({ field: 'name', message: 'Name must be at least 2 characters long' });
+        } else if (name.length > 100) {
+            errors.push({ field: 'name', message: 'Name must be less than 100 characters' });
+        } else if (!/^[a-zA-Z\s\-'\.]+$/.test(name)) {
+            errors.push({ field: 'name', message: 'Name can only contain letters, spaces, hyphens, apostrophes, and periods' });
         }
 
+        // Email validation
         if (!email) {
-            errors.push('Email is required');
+            errors.push({ field: 'email', message: 'Email is required' });
+        } else if (email.length > 254) {
+            errors.push({ field: 'email', message: 'Email must be less than 254 characters' });
         } else {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             if (!emailRegex.test(email)) {
-                errors.push('Please enter a valid email address');
+                errors.push({ field: 'email', message: 'Please enter a valid email address' });
             }
         }
 
-        if (!message || message.length < 10) {
-            errors.push('Message must be at least 10 characters long');
+        // Phone validation (optional but validate if provided)
+        if (phone && phone.length > 0) {
+            if (phone.length < 10 || phone.length > 20) {
+                errors.push({ field: 'phone', message: 'Phone number must be between 10 and 20 characters' });
+            } else if (!/^[\+]?[0-9\s\-\(\)]+$/.test(phone)) {
+                errors.push({ field: 'phone', message: 'Phone number can only contain numbers, spaces, hyphens, parentheses, and + symbol' });
+            }
+        }
+
+        // Message validation
+        if (!message) {
+            errors.push({ field: 'message', message: 'Message is required' });
+        } else if (message.length < 10) {
+            errors.push({ field: 'message', message: 'Message must be at least 10 characters long' });
+        } else if (message.length > 2000) {
+            errors.push({ field: 'message', message: 'Message must be less than 2000 characters' });
         }
 
         return errors;
@@ -271,61 +296,179 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Contact Form Handling ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        // Real-time validation
+        // Enhanced real-time validation with comprehensive feedback
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
+            // Add input event for real-time validation
+            input.addEventListener('input', function() {
+                // Mark field as interacted when user starts typing
+                this.dataset.interacted = 'true';
+                validateField(this, false); // Don't show errors on input, just validate
+            });
+
+            // Add blur event for detailed validation feedback
             input.addEventListener('blur', function() {
-                const fieldName = this.name;
-                const value = this.value.trim();
-                let isValid = true;
-                let errorMessage = '';
+                // Mark field as interacted when user leaves the field
+                this.dataset.interacted = 'true';
+                validateField(this, true); // Show errors on blur
+            });
 
-                switch(fieldName) {
-                    case 'name':
-                        if (!value || value.length < 2) {
-                            isValid = false;
-                            errorMessage = 'Name must be at least 2 characters';
-                        }
-                        break;
-                    case 'email':
-                        if (!value) {
-                            isValid = false;
-                            errorMessage = 'Email is required';
-                        } else {
-                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            if (!emailRegex.test(value)) {
-                                isValid = false;
-                                errorMessage = 'Please enter a valid email';
-                            }
-                        }
-                        break;
-                    case 'message':
-                        if (!value || value.length < 10) {
-                            isValid = false;
-                            errorMessage = 'Message must be at least 10 characters';
-                        }
-                        break;
-                }
-
-                // Remove existing error styling
-                this.classList.remove('error');
-                this.parentNode.classList.remove('success');
-                const existingError = this.parentNode.querySelector('.field-error');
-                if (existingError) existingError.remove();
-
-                if (!isValid) {
-                    this.classList.add('error');
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'field-error';
-                    errorDiv.textContent = errorMessage;
-                    errorDiv.style.cssText = 'color: #f56565; font-size: 0.875rem; margin-top: 0.25rem;';
-                    this.parentNode.appendChild(errorDiv);
-                } else if (value.length > 0) {
-                    // Add success state for valid fields
-                    this.parentNode.classList.add('success');
-                }
+            // Add focus event to clear previous states
+            input.addEventListener('focus', function() {
+                clearFieldState(this);
             });
         });
+
+        // Enhanced field validation function
+        function validateField(field, showErrors = true) {
+            const fieldName = field.name;
+            const value = field.value.trim();
+            const fieldGroup = field.closest('.form-group');
+            const errorElement = fieldGroup.querySelector('.field-error');
+            
+            // Check if user has interacted with this field
+            const hasInteracted = field.dataset.interacted === 'true';
+            
+            // Clear previous states
+            field.classList.remove('error', 'success');
+            fieldGroup.classList.remove('error', 'success');
+            
+            // Remove existing error
+            if (errorElement) {
+                errorElement.remove();
+            }
+
+            // Validate based on field type
+            let isValid = true;
+            let errorMessage = '';
+            let successMessage = '';
+
+            switch(fieldName) {
+                case 'name':
+                    if (!value) {
+                        isValid = false;
+                        errorMessage = 'Name is required';
+                    } else if (value.length < 2) {
+                        isValid = false;
+                        errorMessage = 'Name must be at least 2 characters';
+                    } else if (value.length > 100) {
+                        isValid = false;
+                        errorMessage = 'Name must be less than 100 characters';
+                    } else if (!/^[a-zA-Z\s\-'\.]+$/.test(value)) {
+                        isValid = false;
+                        errorMessage = 'Name can only contain letters, spaces, hyphens, apostrophes, and periods';
+                    } else {
+                        successMessage = 'Name looks good!';
+                    }
+                    break;
+
+                case 'email':
+                    if (!value) {
+                        isValid = false;
+                        errorMessage = 'Email is required';
+                    } else if (value.length > 254) {
+                        isValid = false;
+                        errorMessage = 'Email must be less than 254 characters';
+                    } else {
+                        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                        if (!emailRegex.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email address';
+                        } else {
+                            successMessage = 'Email format is valid!';
+                        }
+                    }
+                    break;
+
+                case 'phone':
+                    if (value && value.length > 0) {
+                        if (value.length < 10 || value.length > 20) {
+                            isValid = false;
+                            errorMessage = 'Phone number must be between 10 and 20 characters';
+                        } else if (!/^[\+]?[0-9\s\-\(\)]+$/.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Phone number must be between 10 and 20 characters';
+                        } else {
+                            successMessage = 'Phone number format is valid!';
+                        }
+                    }
+                    break;
+
+                case 'message':
+                    if (!value) {
+                        isValid = false;
+                        errorMessage = 'Message is required';
+                    } else if (value.length < 10) {
+                        isValid = false;
+                        errorMessage = 'Message must be at least 10 characters';
+                    } else if (value.length > 2000) {
+                        isValid = false;
+                        errorMessage = 'Message must be less than 2000 characters';
+                    } else {
+                        successMessage = 'Message meets requirements!';
+                    }
+                    break;
+            }
+
+            // Apply visual states - only show errors if user has interacted AND we want to show errors
+            if (!isValid && showErrors && hasInteracted) {
+                field.classList.add('error');
+                fieldGroup.classList.add('error');
+                
+                // Create error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'field-error';
+                errorDiv.textContent = errorMessage;
+                errorDiv.id = `${fieldName}-error`;
+                fieldGroup.appendChild(errorDiv);
+            } else if (isValid && value.length > 0) {
+                field.classList.add('success');
+                fieldGroup.classList.add('success');
+            }
+        }
+
+        // Clear field validation state
+        function clearFieldState(field) {
+            const fieldGroup = field.closest('.form-group');
+            const errorElement = fieldGroup.querySelector('.field-error');
+            
+            // Remove error/success classes when focusing
+            field.classList.remove('error', 'success');
+            fieldGroup.classList.remove('error', 'success');
+            
+            if (errorElement) {
+                errorElement.remove();
+            }
+        }
+
+        // Show form status messages
+        function showFormStatus(message, type = 'info') {
+            const formStatus = document.getElementById('formStatus');
+            if (formStatus) {
+                formStatus.textContent = message;
+                formStatus.className = `form-status ${type}`;
+                formStatus.style.display = 'block';
+                
+                // Auto-hide success messages after 5 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }
+            }
+        }
+
+        // Show field-specific errors
+        function showFieldErrors(errors) {
+            errors.forEach(error => {
+                const field = contactForm.querySelector(`[name="${error.field}"]`);
+                if (field) {
+                    // Mark field as interacted when showing submission errors
+                    field.dataset.interacted = 'true';
+                    validateField(field, true);
+                }
+            });
+        }
 
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -334,18 +477,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const errors = validateForm(formData);
 
             if (errors.length > 0) {
-                showNotification(errors.join('. '), 'error');
+                // Show field-specific errors
+                showFieldErrors(errors);
+                showFormStatus('Please correct the errors above and try again.', 'error');
                 return;
             }
 
             const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            const originalDisabled = submitBtn.disabled;
+            const formStatus = document.getElementById('formStatus');
 
             // Show loading state with animation
-            submitBtn.textContent = '';
-            submitBtn.disabled = true;
             submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            showFormStatus('Sending your message...', 'info');
 
             try {
                 const response = await fetch(contactForm.action, {
@@ -357,32 +501,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.ok) {
-                    showNotification('Thank you for your message! We will get back to you soon.', 'success');
+                    showFormStatus('Thank you for your message! We will get back to you within 24 hours.', 'success');
                     contactForm.reset();
+                    
                     // Reset file upload
-                    selectedFilesMap.clear(); // Clear all files
-                    // Clear all file lists
+                    selectedFilesMap.clear();
                     document.querySelectorAll('.file-list').forEach(fileList => {
                         fileList.innerHTML = '';
                     });
-                    // Remove any error styling and success states
+                    
+                    // Clear all validation states and interaction flags
                     inputs.forEach(input => {
-                        input.classList.remove('error');
-                        input.parentNode.classList.remove('success');
+                        input.classList.remove('error', 'success');
+                        input.closest('.form-group').classList.remove('error', 'success');
+                        delete input.dataset.interacted; // Clear interaction state
                     });
+                    
                     const errorElements = contactForm.querySelectorAll('.field-error');
                     errorElements.forEach(el => el.remove());
+                    
+                    // Show success notification
+                    showNotification('Message sent successfully!', 'success');
                 } else {
-                    showNotification('An error occurred. Please try again later.', 'error');
+                    showFormStatus('An error occurred while sending your message. Please try again later.', 'error');
+                    showNotification('Submission failed. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Error submitting form:', error);
-                showNotification('Network error. Please check your connection and try again.', 'error');
+                showFormStatus('Network error. Please check your connection and try again.', 'error');
+                showNotification('Connection error. Please try again.', 'error');
             } finally {
                 // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = originalDisabled;
                 submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
             }
         });
     }
