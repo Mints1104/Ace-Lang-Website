@@ -230,12 +230,6 @@
     }
 
     /* Additional mobile optimizations */
-    .service-item,
-    .language-item {
-        min-height: 60px;
-        /* Smaller minimum height for mobile */
-    }
-
     .service-item h3,
     .language-item h4 {
         font-size: 0.9rem;

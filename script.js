@@ -716,10 +716,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!item.classList.contains('hidden')) {
                     visibleCount++;
                     if (visibleCount > maxVisible) {
-                        // Use class-based hiding instead of inline styles to avoid conflicts
                         item.classList.add('js-hidden');
                     } else {
-                        // Ensure visible items don't have the hidden class
                         item.classList.remove('js-hidden');
                     }
                 }
@@ -734,7 +732,6 @@ document.addEventListener('DOMContentLoaded', function() {
             items.forEach((item) => {
                 // Only show items that are not hidden by region filter
                 if (!item.classList.contains('hidden')) {
-                    // Remove JS hiding class
                     item.classList.remove('js-hidden');
                 }
             });
@@ -771,6 +768,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Region Filter Functionality ---
     const regionFilter = document.getElementById('regionFilter');
     const languageItems = document.querySelectorAll('.language-item');
+    
+    // Safety check - ensure languageItems exist
+    if (!languageItems || languageItems.length === 0) {
+        console.warn('No language items found on the page');
+    }
 
     // Function to sort language items alphabetically
     function sortLanguageItems() {
@@ -795,62 +797,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the language grid with correct collapse state
     function initializeLanguageGrid() {
-        if (languageGrid) {
-            // Reset to collapsed state
-            languageGrid.classList.remove('expanded');
-            if (collapseLanguagesBtn) {
-                collapseLanguagesBtn.classList.remove('expanded');
-                collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
-            }
-            
-            // First reset all items to their default state
-            languageItems.forEach(item => {
-                item.classList.remove('js-hidden');
-                item.style.opacity = '';
-                item.style.transform = '';
-                item.style.removeProperty('--item-delay');
+        if (!languageGrid || !languageItems || languageItems.length === 0) {
+            console.warn('Cannot initialize language grid: missing required elements');
+            return;
+        }
+        
+        // Reset to collapsed state
+        languageGrid.classList.remove('expanded');
+        if (collapseLanguagesBtn) {
+            collapseLanguagesBtn.classList.remove('expanded');
+            collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+        }
+        
+        // First reset all items to their default state
+        languageItems.forEach(item => {
+            item.classList.remove('js-hidden');
+            item.classList.remove('hidden');
+        });
+        
+        // Get current region selection
+        const currentRegion = regionFilter ? regionFilter.value : 'all';
+        
+        // Apply region filtering first
+        languageItems.forEach(item => {
+            if (currentRegion === 'all' || item.dataset.region === currentRegion) {
                 item.classList.remove('hidden');
-            });
-            
-            // Get current region selection
-            const currentRegion = regionFilter ? regionFilter.value : 'all';
-            
-            // Apply region filtering first
-            languageItems.forEach(item => {
-                if (currentRegion === 'all' || item.dataset.region === currentRegion) {
-                    item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+        
+        // Then apply initial collapse state to visible items based on screen size
+        let visibleCount = 0;
+        const maxVisible = window.innerWidth > 768 ? 12 : 4;
+        
+        languageItems.forEach(item => {
+            if (!item.classList.contains('hidden')) {
+                visibleCount++;
+                if (visibleCount > maxVisible) {
+                    // Use class-based hiding for consistency with services grid
+                    item.classList.add('js-hidden');
                 } else {
-                    item.classList.add('hidden');
+                    // Ensure visible items don't have the hidden class
+                    item.classList.remove('js-hidden');
                 }
-            });
+            }
+        });
+        
+        // Update button text based current state
+        if (collapseLanguagesBtn) {
+            const itemsArray = Array.from(languageItems);
+            const visibleItems = itemsArray.filter(item => !item.classList.contains('hidden'));
+            const hiddenItems = itemsArray.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
             
-            // Then apply initial collapse state to visible items based on screen size
-            let visibleCount = 0;
-            const maxVisible = window.innerWidth > 768 ? 12 : 4;
-            
-            languageItems.forEach(item => {
-                if (!item.classList.contains('hidden')) {
-                    visibleCount++;
-                    if (visibleCount > maxVisible) {
-                        // Use class-based hiding for consistency with services grid
-                        item.classList.add('js-hidden');
-                    } else {
-                        // Ensure visible items don't have the hidden class
-                        item.classList.remove('js-hidden');
-                    }
-                }
-            });
-            
-            // Update button text based on current state
-            if (collapseLanguagesBtn) {
-                const visibleItems = languageItems.filter(item => !item.classList.contains('hidden'));
-                const hiddenItems = languageItems.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
-                
-                if (hiddenItems.length > 0) {
-                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
+            if (hiddenItems.length > 0) {
+                collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
                 } else {
-                    collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show Less';
-                }
+                collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show Less';
             }
         }
     }
@@ -929,11 +932,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // First, reset all items to their default state
             languageItems.forEach(item => {
-                // Reset all animation properties and remove JS hiding class
+                // Remove JS hiding class and hidden class
                 item.classList.remove('js-hidden');
-                item.style.opacity = '';
-                item.style.transform = '';
-                item.style.removeProperty('--item-delay');
                 item.classList.remove('hidden');
             });
             
@@ -957,10 +957,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!item.classList.contains('hidden')) {
                     displayedCount++;
                     if (displayedCount > maxVisible) {
-                        // Use class-based hiding for consistency
                         item.classList.add('js-hidden');
                     } else {
-                        // Ensure visible items are properly displayed
                         item.classList.remove('js-hidden');
                     }
                 }
@@ -968,8 +966,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update the button text to reflect the current state
             if (collapseLanguagesBtn) {
-                const visibleItems = languageItems.filter(item => !item.classList.contains('hidden'));
-                const hiddenItems = languageItems.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
+                const itemsArray = Array.from(languageItems);
+                const visibleItems = itemsArray.filter(item => !item.classList.contains('hidden'));
+                const hiddenItems = itemsArray.filter(item => !item.classList.contains('hidden') && item.classList.contains('js-hidden'));
                 
                 if (hiddenItems.length > 0) {
                     collapseLanguagesBtn.querySelector('.collapse-text').textContent = 'Show More';
