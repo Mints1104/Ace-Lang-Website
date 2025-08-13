@@ -1,25 +1,27 @@
 User-agent: *
 Allow: /
+
+# Disallow CSS, JS, and admin directories
 Disallow: /css/
 Disallow: /js/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
+
+# Disallow document file types (these are typically uploaded content)
 Disallow: /*.pdf$
 Disallow: /*.doc$
 Disallow: /*.docx$
 
-# Allow important pages
+# Allow important pages and directories
 Allow: /index.html
 Allow: /*.html
+Allow: /languages/
+Allow: /locations/
 Allow: /sitemap.xml
 
 # Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# Sitemap location
+# Main sitemap location
 Sitemap: https://www.acelang.com/sitemap.xml
-
-# Additional sitemaps for different content types
-Sitemap: https://www.acelang.com/sitemap-services.xml
-Sitemap: https://www.acelang.com/sitemap-locations.xml
