@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://www.acelang.com/translation-services-swansea.html">
     <meta property="og:locale" content="en_GB">
     
-    <!-- Swansea Translation Service Schema -->
+    <!-- Enhanced Swansea Translation Service Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Translation Services Swansea",
-        "description": "Professional translation and interpretation services in Swansea, Wales",
+        "description": "Professional translation and interpretation services in Swansea, Wales. Certified translators for legal, medical, business and personal documents. Serving Swansea and surrounding areas with 150+ languages.",
         "provider": {
             "@type": "LocalBusiness",
             "name": "Ace Language Services",
@@ -44,14 +44,136 @@
             ]
         },
         "areaServed": {
-            "@type": "City",
-            "name": "Swansea",
-            "containedInPlace": {
-                "@type": "Country",
-                "name": "Wales"
-            }
+            "@type": "Place",
+            "name": "Swansea and Surrounding Areas",
+            "containedInPlace": [
+                {
+                    "@type": "City",
+                    "name": "Swansea",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Neath",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Port Talbot",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                }
+            ]
         },
-        "serviceType": ["Document Translation", "Interpretation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"]
+        "serviceType": ["Document Translation", "Interpretation", "Certified Translation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Swansea Translation Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Document Translation Swansea",
+                        "description": "Professional document translation services in Swansea for legal, medical, business and personal documents"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Interpretation Services Swansea",
+                        "description": "Face-to-face and telephone interpretation services in Swansea for meetings, appointments and legal proceedings"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Certified Translation Swansea",
+                        "description": "Certified translation services in Swansea accepted by courts, universities and government agencies"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Swansea Translation FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What translation services do you offer in Swansea?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We offer comprehensive translation services in Swansea including document translation, interpretation, certified translation, legal translation, medical translation, and business translation in over 150 languages."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How quickly can you provide translation services in Swansea?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We provide fast translation services in Swansea with standard translations completed in 2-3 business days, urgent translations within 24 hours, and same-day emergency translation services when needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide on-site interpretation services in Swansea?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide on-site interpretation services in Swansea for meetings, medical appointments, legal proceedings, and business meetings. We also offer telephone interpretation services."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What areas around Swansea do you serve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve Swansea and surrounding areas including Neath, Port Talbot, and nearby towns. We also provide remote translation services throughout South Wales."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema for Swansea Translation Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.acelang.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Location Services",
+                "item": "https://www.acelang.com/#services"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Swansea Translation Services",
+                "item": "https://www.acelang.com/locations/translation-services-swansea.html"
+            }
+        ]
     }
     </script>
     

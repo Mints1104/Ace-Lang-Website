@@ -54,7 +54,7 @@
     <link rel="alternate" hreflang="cy" href="https://www.acelang.com/cy/">
     <link rel="alternate" hreflang="x-default" href="https://www.acelang.com/">
     
-    <!-- Local Business Schema Markup -->
+    <!-- Enhanced Local Business Schema Markup -->
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -91,7 +91,6 @@
               { "@type": "Place", "name": "Cardiff" },
               { "@type": "Place", "name": "Bristol" },
               { "@type": "Place", "name": "Swansea" },
-
               { "@type": "Place", "name": "Gloucester" }
             ]
           },
@@ -104,7 +103,15 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Document Translation",
-                  "description": "Professional document translation in 150+ languages"
+                  "description": "Professional document translation in 150+ languages including legal, medical, technical, and business documents",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Ace Language Services"
+                  },
+                  "areaServed": {
+                    "@type": "Place",
+                    "name": "South Wales and Western England"
+                  }
                 }
               },
               {
@@ -112,7 +119,15 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Interpretation Services",
-                  "description": "Face-to-face and telephone interpretation services"
+                  "description": "Face-to-face, telephone, and video interpretation services for meetings, conferences, and appointments",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Ace Language Services"
+                  },
+                  "areaServed": {
+                    "@type": "Place",
+                    "name": "South Wales and Western England"
+                  }
                 }
               },
               {
@@ -120,7 +135,47 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Court Interpreting",
-                  "description": "Certified court interpretation services"
+                  "description": "Certified court interpretation services for legal proceedings and judicial matters",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Ace Language Services"
+                  },
+                  "areaServed": {
+                    "@type": "Place",
+                    "name": "South Wales and Western England"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Medical Interpreting",
+                  "description": "Specialized medical interpretation services for healthcare appointments and medical documents",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Ace Language Services"
+                  },
+                  "areaServed": {
+                    "@type": "Place",
+                    "name": "South Wales and Western England"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Business Translation",
+                  "description": "Corporate document translation including contracts, reports, and business communications",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Ace Language Services"
+                  },
+                  "areaServed": {
+                    "@type": "Place",
+                    "name": "South Wales and Western England"
+                  }
                 }
               }
             ]
@@ -135,6 +190,84 @@
             "https://twitter.com/yourhandle",
             "https://www.linkedin.com/company/yourcompany",
             "https://www.instagram.com/yourprofile"
+          ]
+        }
+        </script>
+
+        <!-- FAQ Schema Markup for Better Search Visibility -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What languages do you offer translation services for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We offer translation services in over 150 languages including European languages (Polish, French, German, Spanish), Asian languages (Chinese, Japanese, Korean, Hindi), African languages, and Middle Eastern languages (Arabic, Farsi)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How quickly can you complete a translation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Translation turnaround times depend on the document length and complexity. Standard translations typically take 2-3 business days, while urgent translations can be completed within 24 hours. We also offer same-day emergency translation services."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you provide certified translations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we provide certified translations for legal documents, academic transcripts, and official documents. Our certified translations are accepted by courts, universities, and government agencies throughout the UK."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What areas do you serve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We primarily serve Newport, Cardiff, Bristol, Swansea, and surrounding areas in South Wales and Western England. We also provide remote translation services nationwide and internationally."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much do translation services cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Translation costs vary based on language pair, document complexity, and urgency. We offer competitive rates starting from £25 per page for standard translations. Contact us for a free quote based on your specific requirements."
+              }
+            }
+          ]
+        }
+        </script>
+
+        <!-- Breadcrumb Schema Markup for Better Navigation -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.acelang.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Translation Services",
+              "item": "https://www.acelang.com/#services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Language Services",
+              "item": "https://www.acelang.com/#language-services"
+            }
           ]
         }
         </script>
@@ -371,6 +504,106 @@
                     <h3>Translation Emergency</h3>
                 </div>
             </div>
+            
+            <!-- Enhanced Services Schema Markup -->
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "Professional Translation and Interpretation Services",
+                "description": "Comprehensive translation and interpretation services including emergency translation, court interpreting, BSL services, and professional localization. Serving Newport, Cardiff, Bristol, Swansea and throughout Wales and Western England.",
+                "provider": {
+                    "@type": "LocalBusiness",
+                    "name": "Ace Language Services",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "2-4 Chepstow Rd",
+                        "addressLocality": "Newport",
+                        "addressRegion": "Wales",
+                        "postalCode": "NP19 8EA",
+                        "addressCountry": "GB"
+                    },
+                    "telephone": "+441633266201",
+                    "openingHours": "Mo-Fr 08:30-18:30"
+                },
+                "serviceArea": {
+                    "@type": "Place",
+                    "name": "Wales and Western England",
+                    "containedInPlace": ["Newport", "Cardiff", "Bristol", "Swansea"]
+                },
+                "serviceType": [
+                    "Document Translation",
+                    "Interpretation Services",
+                    "Court Interpreting",
+                    "Emergency Translation",
+                    "BSL Services",
+                    "Localization",
+                    "Design Services"
+                ],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Translation and Interpretation Services",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Emergency Interpretation & Translation",
+                                "description": "24/7 emergency translation and interpretation services for urgent situations requiring immediate language support"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Telephone Interpretation",
+                                "description": "Professional telephone interpretation services for remote communication needs"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Court Interpreting",
+                                "description": "Certified court interpreting services for legal proceedings and judicial matters"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "BSL (British Sign Language)",
+                                "description": "Professional British Sign Language interpretation services for deaf and hard of hearing individuals"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Conference Calls",
+                                "description": "Multi-language conference call interpretation services for international meetings"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Localization",
+                                "description": "Cultural and linguistic adaptation services for international markets and audiences"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                                "itemOffered": {
+                                "@type": "Service",
+                                "name": "Design Services",
+                                "description": "Professional design services for multilingual materials including leaflets, posters, and marketing materials"
+                            }
+                        }
+                    ]
+                }
+            }
+            </script>
             
             <!-- Language Translation Services -->
             <div class="language-services">

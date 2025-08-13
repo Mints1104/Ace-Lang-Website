@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://www.acelang.com/translation-services-bristol.html">
     <meta property="og:locale" content="en_GB">
     
-    <!-- Bristol Translation Service Schema -->
+    <!-- Enhanced Bristol Translation Service Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Translation Services Bristol",
-        "description": "Professional translation and interpretation services in Bristol, England",
+        "description": "Professional translation and interpretation services in Bristol, England. Certified translators for legal, medical, business and personal documents. Serving Bristol and surrounding areas with 150+ languages.",
         "provider": {
             "@type": "LocalBusiness",
             "name": "Ace Language Services",
@@ -44,14 +44,136 @@
             ]
         },
         "areaServed": {
-            "@type": "City",
-            "name": "Bristol",
-            "containedInPlace": {
-                "@type": "Country",
-                "name": "England"
-            }
+            "@type": "Place",
+            "name": "Bristol and Surrounding Areas",
+            "containedInPlace": [
+                {
+                    "@type": "City",
+                    "name": "Bristol",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "England"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Bath",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "England"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Weston-super-Mare",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "England"
+                    }
+                }
+            ]
         },
-        "serviceType": ["Document Translation", "Interpretation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"]
+        "serviceType": ["Document Translation", "Interpretation", "Certified Translation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Bristol Translation Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Document Translation Bristol",
+                        "description": "Professional document translation services in Bristol for legal, medical, business and personal documents"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Interpretation Services Bristol",
+                        "description": "Face-to-face and telephone interpretation services in Bristol for meetings, appointments and legal proceedings"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Certified Translation Bristol",
+                        "description": "Certified translation services in Bristol accepted by courts, universities and government agencies"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Bristol Translation FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What translation services do you offer in Bristol?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We offer comprehensive translation services in Bristol including document translation, interpretation, certified translation, legal translation, medical translation, and business translation in over 150 languages."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How quickly can you provide translation services in Bristol?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We provide fast translation services in Bristol with standard translations completed in 2-3 business days, urgent translations within 24 hours, and same-day emergency translation services when needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide on-site interpretation services in Bristol?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide on-site interpretation services in Bristol for meetings, medical appointments, legal proceedings, and business meetings. We also offer telephone interpretation services."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What areas around Bristol do you serve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve Bristol and surrounding areas including Bath, Weston-super-Mare, and nearby towns. We also provide remote translation services throughout the South West of England."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema for Bristol Translation Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.acelang.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Location Services",
+                "item": "https://www.acelang.com/#services"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Bristol Translation Services",
+                "item": "https://www.acelang.com/locations/translation-services-bristol.html"
+            }
+        ]
     }
     </script>
     

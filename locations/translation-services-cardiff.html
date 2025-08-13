@@ -19,13 +19,13 @@
     <meta property="og:url" content="https://www.acelang.com/translation-services-cardiff.html">
     <meta property="og:locale" content="en_GB">
     
-    <!-- Cardiff Translation Service Schema -->
+    <!-- Enhanced Cardiff Translation Service Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Translation Services Cardiff",
-        "description": "Professional translation and interpretation services in Cardiff, Wales",
+        "description": "Professional translation and interpretation services in Cardiff, Wales. Certified translators for legal, medical, business and personal documents. Serving Cardiff and surrounding areas with 150+ languages.",
         "provider": {
             "@type": "LocalBusiness",
             "name": "Ace Language Services",
@@ -44,14 +44,136 @@
             ]
         },
         "areaServed": {
-            "@type": "City",
-            "name": "Cardiff",
-            "containedInPlace": {
-                "@type": "Country",
-                "name": "Wales"
-            }
+            "@type": "Place",
+            "name": "Cardiff and Surrounding Areas",
+            "containedInPlace": [
+                {
+                    "@type": "City",
+                    "name": "Cardiff",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Newport",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                },
+                {
+                    "@type": "City",
+                    "name": "Barry",
+                    "containedInPlace": {
+                        "@type": "Country",
+                        "name": "Wales"
+                    }
+                }
+            ]
         },
-        "serviceType": ["Document Translation", "Interpretation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"]
+        "serviceType": ["Document Translation", "Interpretation", "Certified Translation", "Legal Translation", "Medical Translation", "Business Translation", "Academic Translation"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Cardiff Translation Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Document Translation Cardiff",
+                        "description": "Professional document translation services in Cardiff for legal, medical, business and personal documents"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Interpretation Services Cardiff",
+                        "description": "Face-to-face and telephone interpretation services in Cardiff for meetings, appointments and legal proceedings"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Certified Translation Cardiff",
+                        "description": "Certified translation services in Cardiff accepted by courts, universities and government agencies"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Cardiff Translation FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What translation services do you offer in Cardiff?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We offer comprehensive translation services in Cardiff including document translation, interpretation, certified translation, legal translation, medical translation, and business translation in over 150 languages."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How quickly can you provide translation services in Cardiff?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We provide fast translation services in Cardiff with standard translations completed in 2-3 business days, urgent translations within 24 hours, and same-day emergency translation services when needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide on-site interpretation services in Cardiff?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide on-site interpretation services in Cardiff for meetings, medical appointments, legal proceedings, and business meetings. We also offer telephone interpretation services."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What areas around Cardiff do you serve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve Cardiff and surrounding areas including Newport, Barry, and nearby towns. We also provide remote translation services throughout South Wales."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema for Cardiff Translation Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.acelang.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Location Services",
+                "item": "https://www.acelang.com/#services"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Cardiff Translation Services",
+                "item": "https://www.acelang.com/locations/translation-services-cardiff.html"
+            }
+        ]
     }
     </script>
     
