@@ -1,17 +1,13 @@
-# PowerShell script to regenerate the first batch of 10 language pages
+# PowerShell script to generate 5 new high-impact language pages
 # Based on the French translation services template - FIXED VERSION
+# Languages selected from index.html that are supported but missing
 
 $languages = @(
-    @{Name = "Greek"; Native = "Greek"; Region = "european" },
-    @{Name = "Romanian"; Native = "Romanian"; Region = "european" },
-    @{Name = "Bulgarian"; Native = "Bulgarian"; Region = "european" },
-    @{Name = "Ukrainian"; Native = "Ukrainian"; Region = "european" },
-    @{Name = "Norwegian"; Native = "Norwegian"; Region = "european" },
-    @{Name = "Slovak"; Native = "Slovak"; Region = "european" },
-    @{Name = "Hungarian"; Native = "Hungarian"; Region = "european" },
-    @{Name = "Czech"; Native = "Czech"; Region = "european" },
-    @{Name = "Serbian"; Native = "Serbian"; Region = "european" },
-    @{Name = "Croatian"; Native = "Croatian"; Region = "european" }
+    @{Name = "Oromo"; Native = "Oromo"; Region = "african" },
+    @{Name = "Tigrinya"; Native = "Tigrinya"; Region = "african" },
+    @{Name = "Amharic"; Native = "Amharic"; Region = "african" },
+    @{Name = "Nuer"; Native = "Nuer"; Region = "african" },
+    @{Name = "Lingala"; Native = "Lingala"; Region = "african" }
 )
 
 $templateFile = "languages/french-translation-services.html"
@@ -22,7 +18,7 @@ foreach ($lang in $languages) {
     $region = $lang.Region
     $outputFile = "languages/$($langName.ToLower())-translation-services.html"
     
-    Write-Host "Regenerating $langName translation services page..."
+    Write-Host "Generating $langName translation services page..."
     
     # Read the template file
     $content = Get-Content $templateFile -Raw
@@ -130,11 +126,11 @@ foreach ($lang in $languages) {
     # Write the new file
     $content | Out-File -FilePath $outputFile -Encoding UTF8
     
-    Write-Host "Regenerated: $outputFile"
+    Write-Host "Created: $outputFile"
 }
 
-Write-Host "`nAll 10 first batch language pages have been regenerated successfully!"
-Write-Host "Regenerated pages:"
+Write-Host "`nAll 5 new language pages have been generated successfully!"
+Write-Host "Generated pages:"
 foreach ($lang in $languages) {
     Write-Host "- $($lang.Name) ($($lang.Native))"
 }
