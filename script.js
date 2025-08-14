@@ -709,7 +709,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Collapse - hide items after the first few
             const items = grid.querySelectorAll(itemSelector);
             let visibleCount = 0;
-            const maxVisible = itemSelector === '.service-item' ? 6 : (window.innerWidth > 768 ? 12 : 4);
+            // Enhanced logic: Better mobile/desktop handling
+        let maxVisible;
+        if (itemSelector === '.service-item') {
+            // Services: Show more on larger screens
+            if (window.innerWidth > 1200) maxVisible = 20;      // Large desktop
+            else if (window.innerWidth > 768) maxVisible = 16;   // Desktop
+            else maxVisible = 6;                                 // Mobile
+        } else {
+            // Languages: Adaptive based on screen size
+            if (window.innerWidth > 1200) maxVisible = 16;      // Large desktop
+            else if (window.innerWidth > 768) maxVisible = 12;   // Desktop
+            else maxVisible = 4;                                 // Mobile
+        }
             
             items.forEach((item) => {
                 // Only count items that are not hidden by region filter
@@ -1035,5 +1047,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // --- Initialize Services for Desktop ---
+    function initializeServicesForDesktop() {
+        if (window.innerWidth > 768 && servicesGrid) {
+            // On desktop, show all services by default
+            const serviceItems = servicesGrid.querySelectorAll('.service-item');
+            serviceItems.forEach(item => {
+                item.classList.remove('js-hidden');
+            });
+        }
+    }
+
+    // Call initialization function
+    initializeServicesForDesktop();
+
+    // Re-initialize on window resize
+    window.addEventListener('resize', initializeServicesForDesktop);
 
 }); 

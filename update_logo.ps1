@@ -268,5 +268,5 @@ catch {
 }
 
 Write-Host ""
-Write-ColorOutput "Script completed. Press any key to exit..." "White"
+zWrite-ColorOutput "Script completed. Press any key to exit..." "White"
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
