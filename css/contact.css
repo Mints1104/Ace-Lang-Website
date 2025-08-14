@@ -819,105 +819,61 @@
     }
 }
 
-/* Global form styling override - highest priority */
-.form-group,
-.form-group * {
-    /* Ensure proper form layout */
+/* =========================
+   Form Layout Consolidation
+   ========================= */
+
+/* Ensure consistent form layout across all form types */
+.contact .form-group,
+.contact-form .form-group,
+form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    position: relative;
 }
 
-/* Additional form layout reinforcement */
-html .form-group {
-    display: flex !important;
-    flex-direction: column !important;
+/* Form labels - always on top */
+.contact .form-group label,
+.contact-form .form-group label,
+form .form-group label {
+    order: 1;
+    display: block;
+    position: static;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: none;
+    padding: 0;
+    letter-spacing: normal;
+    transform: none;
+    pointer-events: auto;
 }
 
-html .form-group label {
-    order: 1 !important;
-    display: block !important;
-    position: static !important;
-    margin-bottom: var(--spacing-xs) !important;
+/* Form inputs - always below labels */
+.contact .form-group input,
+.contact-form .form-group input,
+.contact-form .form-group textarea,
+.contact-form .form-group select,
+form .form-group input,
+form .form-group textarea,
+form .form-group select {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
 }
 
-html .form-group input,
-html .form-group textarea,
-html .form-group select {
-    order: 2 !important;
-    width: 100% !important;
-    margin-top: 0 !important;
-}
-
-/* Ensure file upload groups maintain their layout */
+/* File upload groups maintain their layout */
 .form-group.file-upload-group {
-    display: flex !important;
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group.file-upload-group label {
-    order: 1 !important;
+    order: 1;
 }
 
 .form-group.file-upload-group input[type="file"] {
-    order: 2 !important;
-}
-
-/* Force form layout with highest specificity */
-body .contact .form-group,
-body .contact-form .form-group,
-body form .form-group {
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-body .contact .form-group label,
-body .contact-form .form-group label,
-body form .form-group label {
-    order: 1 !important;
-    display: block !important;
-    position: static !important;
-    margin-bottom: var(--spacing-xs) !important;
-}
-
-body .contact .form-group input,
-body .contact .form-group textarea,
-body .contact .form-group select,
-body .contact-form .form-group input,
-body .contact-form .form-group textarea,
-body .contact-form .form-group select,
-body form .form-group input,
-body form .form-group textarea,
-body form .form-group select {
-    order: 2 !important;
-    width: 100% !important;
-    margin-top: 0 !important;
-}
-
-/* Ultimate form layout override - highest specificity possible */
-html body .contact .form-group,
-html body .contact-form .form-group,
-html body form .form-group {
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-html body .contact .form-group label,
-html body .contact-form .form-group label,
-html body form .form-group label {
-    order: 1 !important;
-    display: block !important;
-    position: static !important;
-    margin-bottom: var(--spacing-xs) !important;
-}
-
-html body .contact .form-group input,
-html body .contact .form-group textarea,
-html body .contact .form-group select,
-html body .contact-form .form-group input,
-html body .contact-form .form-group textarea,
-html body .contact-form .form-group select,
-html body form .form-group input,
-html body form .form-group textarea,
-html body form .form-group select {
-    order: 2 !important;
-    width: 100% !important;
-    margin-top: 0 !important;
+    order: 2;
 }

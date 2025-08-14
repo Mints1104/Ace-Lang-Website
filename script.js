@@ -1,5 +1,22 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+    // =========================
+    // Contact Navigation Fix
+    // =========================
+    // Fix contact button navigation to use same-page contact sections
+    function fixContactNavigation() {
+        // Get all contact links that are incorrectly pointing to index.html#contact
+        const contactLinks = document.querySelectorAll('a[href*="index.html#contact"]');
+        
+        contactLinks.forEach(link => {
+            // Always use same-page contact section navigation
+            link.href = '#contact';
+        });
+    }
+    
+    // Apply the fix immediately
+    fixContactNavigation();
+
     // Enhanced notification system with better styling
     function showNotification(message, type = 'info') {
         // Remove existing notifications
