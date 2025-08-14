@@ -24,7 +24,7 @@
 }
 
 .breadcrumbs-container {
-    max-width: var(--container-max-width);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
     position: relative;
