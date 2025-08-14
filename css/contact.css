@@ -631,7 +631,8 @@
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-primary);
-    font-size: 2.5rem;
+    font-size: 2rem;
+    /* Fixed: Changed from 2.5rem to 2rem to match other section headers */
     font-weight: 700;
 }
 
