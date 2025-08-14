@@ -17,6 +17,82 @@ document.addEventListener('DOMContentLoaded', function() {
     // Apply the fix immediately
     fixContactNavigation();
 
+    // =========================
+    // Breadcrumb Navigation System
+    // =========================
+
+    // Generate breadcrumbs based on current page
+    function generateBreadcrumbs() {
+        const breadcrumbsContainer = document.querySelector('.breadcrumbs-list');
+        if (!breadcrumbsContainer) return;
+
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/').filter(segment => segment);
+        
+        // Check if we're on the home page (either / or /index.html)
+        const isHomePage = currentPath === '/' || currentPath === '/index.html' || pathSegments.length === 0;
+        
+        // Clear existing breadcrumbs
+        breadcrumbsContainer.innerHTML = '';
+        
+        // If we're on the home page, don't show breadcrumbs at all
+        if (isHomePage) {
+            return;
+        }
+        
+        // Add home breadcrumb
+        const homeItem = document.createElement('li');
+        homeItem.className = 'breadcrumbs-item';
+        homeItem.innerHTML = `
+            <a href="/" class="breadcrumbs-link breadcrumbs-home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        `;
+        breadcrumbsContainer.appendChild(homeItem);
+
+        // Add breadcrumbs for each path segment
+        let currentUrl = '';
+        pathSegments.forEach((segment, index) => {
+            // Skip index.html as it's the same as home
+            if (segment === 'index.html') return;
+            
+            currentUrl += '/' + segment;
+
+            // Convert segment to readable text
+            let segmentText = segment
+                .replace(/\.html$/, '') // Remove .html extension
+                .replace(/-/g, ' ') // Replace hyphens with spaces
+                .replace(/\b\w/g, l => l.toUpperCase()); // Capitalize first letter of each word
+
+            // Special handling for common segments
+            if (segment === 'languages') segmentText = 'Languages';
+            if (segment === 'locations') segmentText = 'Locations';
+            if (segment === 'careers') segmentText = 'Careers';
+
+            // Create breadcrumb item
+            const breadcrumbItem = document.createElement('li');
+            breadcrumbItem.className = 'breadcrumbs-item';
+
+            if (index === pathSegments.length - 1) {
+                // Last item (current page)
+                breadcrumbItem.innerHTML = `<span class="breadcrumbs-current">${segmentText}</span>`;
+            } else {
+                // Navigation item
+                const link = document.createElement('a');
+                link.href = currentUrl;
+                link.className = 'breadcrumbs-link';
+                link.textContent = segmentText;
+                breadcrumbItem.appendChild(link);
+            }
+
+            breadcrumbsContainer.appendChild(breadcrumbItem);
+        });
+    }
+
+    // Initialize breadcrumbs
+    generateBreadcrumbs();
+
     // Enhanced notification system with better styling
     function showNotification(message, type = 'info') {
         // Remove existing notifications
@@ -643,7 +719,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Service Item Click Handlers ---
     const serviceItems = document.querySelectorAll('.service-item');
     serviceItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function(e) {
+            // Check if the click was on a link - if so, don't override the link behavior
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return; // Let the link handle the click
+            }
+            
             const serviceName = this.querySelector('h3').textContent;
             // Scroll to contact form and pre-fill with service name
             const contactForm = document.getElementById('contactForm');

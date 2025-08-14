@@ -1,0 +1,14 @@
+# Netlify redirects file
+# This enables the 404 error page for non-existent URLs
+
+# Redirect all non-existent URLs to 404.html
+/*    /404.html   404
+
+# Optional: Redirect common misspellings to correct pages
+/languages/welsh-translaon-services.html /languages/welsh-translation-services.html 301
+/languages/welsh-translaon-services /languages/welsh-translation-services.html 301
+
+# Redirect old or alternative URLs to main pages
+/translations /#services 301
+/contact-us /#contact 301
+/about-us /#about 301
