@@ -15,6 +15,15 @@
 @media (min-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Tablet: 3-column layout for medium screens */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
     }
 }
 
@@ -1120,9 +1129,9 @@ h3.language-section-title {
         display: flex;
     }
 
-    /* Ensure proper grid layout on desktop */
+    /* Ensure proper grid layout on desktop - use responsive breakpoints */
     .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        /* Grid layout is handled by responsive breakpoints above */
         gap: var(--spacing-lg);
     }
 
