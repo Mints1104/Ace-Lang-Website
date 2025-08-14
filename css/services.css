@@ -177,10 +177,15 @@ h3.language-section-title {
 
 
 
+/* =========================
+   Collapse Toggle Button - Consolidated Styles
+   ========================= */
+
 .collapse-toggle {
+    /* Base styles */
     display: none;
     background: none;
-    border: none;
+    border: 1px solid transparent;
     color: var(--accent-color);
     font-size: 1rem;
     font-weight: 600;
@@ -188,19 +193,15 @@ h3.language-section-title {
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-sm);
     transition: all var(--transition-normal);
+
+    /* Layout */
     align-items: center;
     justify-content: center;
-    /* Center content horizontally */
     text-align: center;
-    /* Center text */
     line-height: 1;
-    /* Force consistent line height */
-    vertical-align: middle;
-    /* Force vertical alignment */
     gap: var(--spacing-xs);
     white-space: nowrap;
     flex-shrink: 0;
-    border: 1px solid transparent;
 }
 
 .collapse-toggle:hover {
@@ -294,9 +295,9 @@ h3.language-section-title {
         transform: translateY(-2px);
     }
 
-    /* Show collapse toggle on mobile only */
+    /* Mobile: Show collapse toggle */
     .collapse-toggle {
-        display: flex !important;
+        display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -354,9 +355,12 @@ h3.language-section-title {
         font-size: 0.75rem;
     }
 
+    /* Small mobile: Adjust collapse toggle size and position */
     .collapse-toggle {
         font-size: 0.95rem;
         padding: var(--spacing-xs);
+        align-self: flex-end;
+        margin-top: var(--spacing-xs);
     }
 
     /* Improve mobile layout for section headers */
@@ -370,11 +374,6 @@ h3.language-section-title {
     .section-header .language-section-title {
         /* Note: Text alignment is now handled by unified section title rules above */
         width: 100%;
-    }
-
-    .collapse-toggle {
-        align-self: flex-end;
-        margin-top: var(--spacing-xs);
     }
 
     /* Very small mobile language section improvements */
@@ -398,6 +397,7 @@ h3.language-section-title {
         flex-shrink: 0;
     }
 
+    /* Small mobile: Additional collapse toggle adjustments */
     .collapse-toggle {
         font-size: 0.8rem;
         padding: 8px 16px;
@@ -761,13 +761,9 @@ h3.language-section-title {
         display: flex !important;
     }
 
-    /* Show collapse toggle on desktop for language section */
+    /* Desktop language section collapse toggle */
     .language-services .collapse-toggle {
         display: flex;
-    }
-
-    /* Desktop-specific styling for collapse toggle */
-    .language-services .collapse-toggle {
         font-size: 0.9rem;
         padding: var(--spacing-sm) var(--spacing-md);
         border: 2px solid var(--accent-color);
@@ -1090,27 +1086,7 @@ h3.language-section-title {
         /* Force consistent padding */
     }
 
-    .collapse-toggle {
-        width: auto;
-        /* Let it size naturally */
-        justify-content: center;
-        align-items: center;
-        /* Ensure text is vertically centered */
-        text-align: center;
-        /* Ensure text is horizontally centered */
-        line-height: 1;
-        /* Force consistent line height */
-        vertical-align: middle;
-        /* Force vertical alignment */
-        display: flex;
-        /* Force flex display */
-        align-items: center;
-        /* Force vertical centering */
-        height: 40px;
-        /* Force consistent height */
-        padding: 8px 16px;
-        /* Force consistent padding */
-    }
+    /* Mobile: Collapse toggle layout handled by base styles above */
 
     /* Reduce spacing between title and controls */
     /* Note: This is now handled by unified section title rules above */
@@ -1128,19 +1104,19 @@ h3.language-section-title {
 /* Desktop: Hide collapse toggle and show all services */
 @media (min-width: 769px) {
 
-    /* Hide collapse toggle button on desktop */
+    /* Desktop: Hide collapse toggle button */
     .collapse-toggle {
-        display: none !important;
+        display: none;
     }
 
-    /* Ensure all services are visible on desktop */
+    /* Desktop: Ensure all services are visible */
     .services-grid .service-item {
-        display: flex !important;
+        display: flex;
     }
 
-    /* Override any JavaScript hiding on desktop */
+    /* Desktop: Override any JavaScript hiding */
     .services-grid .service-item.js-hidden {
-        display: flex !important;
+        display: flex;
     }
 
     /* Ensure proper grid layout on desktop */
@@ -1174,7 +1150,7 @@ h3.language-section-title {
 /* Mobile: Keep collapse toggle visible and functional */
 @media (max-width: 768px) {
     .collapse-toggle {
-        display: flex !important;
+        display: flex;
     }
 
     /* Mobile-specific service grid */

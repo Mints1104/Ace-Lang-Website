@@ -6,16 +6,16 @@
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
     padding: var(--spacing-md) 0;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
-    width: 100% !important;
-    transform: none !important;
-    margin: 0 !important;
+    width: 100%;
+    transform: none;
+    margin: 0;
     /* Ensure header stays on top */
     will-change: transform;
 }
@@ -140,41 +140,41 @@
 .header .contact-item span,
 .header .contact-item p,
 .header .contact-item a {
-    color: #ffffff !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    transition: color 0.2s ease !important;
-    transform: none !important;
-    text-decoration: none !important;
+    color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: color 0.2s ease;
+    transform: none;
+    text-decoration: none;
 }
 
 /* Phone link styling for header */
 .header .phone-link:hover {
-    color: var(--accent-color) !important;
-    text-decoration: underline !important;
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
 /* Email link styling for header */
 .header .email-link:hover {
-    color: var(--accent-color) !important;
-    text-decoration: underline !important;
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
 /* Override any contact section styling for header */
 .header .contact-item {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    transition: none !important;
-    transform: none !important;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    transition: none;
+    transform: none;
 }
 
 .cta-button {
@@ -483,56 +483,17 @@
 /* Ensure header stays fixed on all screen sizes */
 @media (max-width: 768px) {
     .header {
-        position: fixed !important;
-        top: 0 !important;
-        z-index: 1000 !important;
-        /* Additional reinforcement */
-        transform: none !important;
+        /* Header positioning handled by base styles above */
         will-change: transform;
     }
 }
 
 @media (max-width: 480px) {
     .header {
-        position: fixed !important;
-        top: 0 !important;
-        z-index: 1000 !important;
-        /* Additional reinforcement */
-        transform: none !important;
+        /* Header positioning handled by base styles above */
         will-change: transform;
     }
 }
 
-/* Global header positioning override - highest priority */
-.header,
-.header * {
-    /* Ensure no child elements can override header positioning */
-}
-
-/* Additional header positioning reinforcement */
-html .header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
-    width: 100% !important;
-    transform: none !important;
-}
-
-/* Ultimate header positioning override - highest specificity possible */
-html body .header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
-    width: 100% !important;
-    transform: none !important;
-}
-
-/* Ensure header stays fixed even with conflicting CSS */
-html body .header,
-html body .header * {
-    /* Prevent any child elements from affecting header positioning */
-}
+/* Header positioning is now handled by the base .header rule above */
+/* The high specificity of .header should be sufficient */

@@ -33,7 +33,7 @@
 }
 
 .form-group label {
-    position: static !important;
+    position: static;
     color: var(--text-primary);
     font-weight: 600;
     font-size: 0.95rem;
@@ -495,7 +495,7 @@
     border: 2px dashed var(--border-color);
     border-radius: var(--radius-md);
     background: var(--bg-secondary);
-    cursor: pointer !important;
+    cursor: pointer;
     transition: all var(--transition-normal);
     text-align: center;
     padding: var(--spacing-lg);
@@ -537,7 +537,7 @@
 }
 
 .file-item {
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -545,8 +545,8 @@
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     margin-bottom: var(--spacing-xs);
-    visibility: visible !important;
-    opacity: 1 !important;
+    visibility: visible;
+    opacity: 1;
     position: relative;
     z-index: 1;
 }
@@ -609,16 +609,16 @@
 
 /* Override any conflicting rules that might hide file items */
 .contact-form .file-list .file-item {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
 }
 
 .contact-form .file-list .file-item.js-hidden,
 .contact-form .file-list .file-item.hidden {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Careers Page Form Styles */
@@ -644,12 +644,12 @@
 
 /* Careers Form Styling - Exclude file uploads */
 .contact .form-group:not(.file-upload-group) label {
-    display: block !important;
+    display: block;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
     font-weight: 600;
     font-size: 0.95rem;
-    position: static !important;
+    position: static;
     top: auto;
     left: auto;
     background: none;
