@@ -37,6 +37,13 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    /* Add flexbox to align content and push buttons to bottom */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 280px;
+    /* Ensure flexbox works */
+    align-items: stretch;
 }
 
 /* Ensure links within service items are properly clickable */
@@ -44,6 +51,8 @@
     position: relative;
     z-index: 10;
     cursor: pointer;
+    /* Push buttons to bottom of card */
+    margin-top: auto;
 }
 
 .service-item::before {
@@ -617,7 +626,7 @@ h3.language-section-title {
     border-radius: var(--radius-md);
     font-weight: 500;
     transition: all var(--transition-normal);
-    margin-top: var(--spacing-sm);
+    margin-top: auto;
     position: relative;
     z-index: 3;
     cursor: pointer;
