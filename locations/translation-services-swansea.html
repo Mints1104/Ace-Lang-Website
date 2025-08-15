@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,7 @@
     <meta name="description" content="Professional translation & interpretation services in Swansea, Wales. 150+ languages including Welsh, Polish, Arabic, Spanish. Certified translators serving Swansea businesses. Call +44 1633 266 201">
     
     <!-- SEO Meta Tags -->
-    <meta name="keywords" content="translation services Swansea, interpreters Swansea Wales, document translation Swansea, Welsh translation Swansea, Polish translator Swansea, Arabic interpreter Swansea, Spanish interpreter Swansea, Farsi interpreter Swansea, Mandarin interpreter Swansea, Hindi interpreter Swansea">
-    <meta name="author" content="Ace Language Services">
+<meta name="author" content="Ace Language Services">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.acelang.com/translation-services-swansea.html">
     
@@ -214,7 +213,7 @@
                     </div>
                 </div>
                 <!-- Mobile burger menu button -->
-                <div class="burger-menu">
+                <div class="burger-menu" aria-controls="mobile-sidebar" aria-expanded="false" role="button" tabindex="0">
                     <div class="burger-icon">
                         <span></span>
                         <span></span>
@@ -227,9 +226,9 @@
                 <nav class="desktop-nav">
                     <ul>
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="index.html#services">Our Services</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="../#services">Our Services</a></li>
+                        <li><a href="../#about">About Us</a></li>
+                        <li><a href="../#contact">Contact</a></li>
                         <li><a href="../careers.html">Careers</a></li>
                     </ul>
                 </nav>
@@ -239,7 +238,7 @@
     </header>
 
     <!-- Mobile sidebar navigation -->
-    <div class="mobile-sidebar">
+    <div class="mobile-sidebar" id="mobile-sidebar">
         <div class="sidebar-header">
             <h3>Ace Language Services</h3>
             <button class="close-sidebar">
@@ -249,9 +248,9 @@
         <nav class="sidebar-nav">
             <ul>
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="index.html#services">Our Services</a></li>
-                <li><a href="index.html#about">About Us</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="../#services">Our Services</a></li>
+                <li><a href="../#about">About Us</a></li>
+                <li><a href="../#contact">Contact</a></li>
                 <li><a href="../careers.html">Careers</a></li>
             </ul>
         </nav>
@@ -439,7 +438,7 @@
             <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-form-container">
-                                        <form class="contact-form" id="contactForm" data-netlify="true" name="contact" novalidate>
+                                        <form class="contact-form" id="contactForm" data-netlify="true" name="contact" novalidate method="POST" action="/" action="/">
                         <div class="form-group" data-field="name">
                             <input type="text" id="name" name="name" minlength="2" maxlength="100" pattern="[A-Za-z\s\-']+" aria-describedby="name-error" autocomplete="name" required>
                             <label for="name">Name *</label>
@@ -489,7 +488,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h3>Address</h3>
-                                <p><a href="https://maps.google.com/?q=2-4+Chepstow+Rd+Newport+NP19+8EA" target="_blank" class="address-link">2-4 Chepstow Rd<br>Newport, NP19 8EA</a></p>
+                                <p><a href="https://maps.google.com/?q=2-4+Chepstow+Rd+Newport+NP19+8EA" target="_blank" rel="noopener noreferrer" class="address-link">2-4 Chepstow Rd<br>Newport, NP19 8EA</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -572,7 +571,7 @@
                 <div class="footer-section">
                     <h3>Services & Languages</h3>
                     <ul>
-                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="../#services">Our Services</a></li>
                         <li><a href="../languages/polish-translation-services.html">Polish</a></li>
 <li><a href="../languages/arabic-translation-services.html">Arabic</a></li>
 <li><a href="../languages/spanish-translation-services.html">Spanish</a></li>
@@ -583,8 +582,8 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="../#about">About Us</a></li>
+                        <li><a href="../#contact">Contact</a></li>
                         <li><a href="../careers.html">Careers</a></li>
                         <li><a href="translation-services-cardiff.html">Cardiff</a></li>
                         <li><a href="translation-services-bristol.html">Bristol</a></li>
@@ -601,3 +600,4 @@
     <script src="../script.js"></script>
 </body>
 </html>
+
