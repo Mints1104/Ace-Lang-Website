@@ -5,6 +5,12 @@ $files = Get-ChildItem -Recurse -File -Include *.html
 foreach ($f in $files) {
     $c = Get-Content -Raw -Path $f.FullName
 
+    # 0) Remove obsolete/low-value meta tags globally
+    $c = [regex]::Replace($c, '(?im)^\s*<meta\s+name="keywords"[^>]*>\s*\r?\n?', '')
+    $c = [regex]::Replace($c, '(?im)^\s*<meta\s+name="distribution"[^>]*>\s*\r?\n?', '')
+    $c = [regex]::Replace($c, '(?im)^\s*<meta\s+name="rating"[^>]*>\s*\r?\n?', '')
+    $c = [regex]::Replace($c, '(?im)^\s*<meta\s+name="revisit-after"[^>]*>\s*\r?\n?', '')
+
     # 1) Convert div.burger-menu → button.burger-menu (preserve inner burger-icon)
     $c = [regex]::Replace(
         $c,
