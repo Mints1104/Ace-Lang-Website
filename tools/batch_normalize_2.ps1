@@ -46,19 +46,21 @@ foreach ($f in $files) {
     )
 
     # 4) Normalize canonical/og:url/hreflang paths for language and location detail pages
-    if ($f.DirectoryName -match "\\languages(\\|$)" -and $f.Name -ne 'index.html') {
+    if ($f.DirectoryName -match '\\languages(\\|$)' -and $f.Name -ne 'index.html') {
         $fname = $f.Name
-        $c = [regex]::Replace($c, '<link\s+rel="canonical"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"canonical\" href=\"https://www.acelang.com/languages/$fname\"")
-        $c = [regex]::Replace($c, '<meta\s+property="og:url"\s+content="https://www\.acelang\.com/[^"#>]*"', "<meta property=\"og:url\" content=\"https://www.acelang.com/languages/$fname\"")
-        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="en-GB"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://www.acelang.com/languages/$fname\"")
-        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="x-default"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://www.acelang.com/languages/$fname\"")
+        $langUrl = "https://www.acelang.com/languages/$fname"
+        $c = [regex]::Replace($c, '<link\s+rel="canonical"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="canonical" href="' + $langUrl + '"')
+        $c = [regex]::Replace($c, '<meta\s+property="og:url"\s+content="https://www\.acelang\.com/[^"#>]*"', '<meta property="og:url" content="' + $langUrl + '"')
+        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="en-GB"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="alternate" hreflang="en-GB" href="' + $langUrl + '"')
+        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="x-default"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="alternate" hreflang="x-default" href="' + $langUrl + '"')
     }
-    elseif ($f.DirectoryName -match "\\locations(\\|$)" -and $f.Name -ne 'index.html') {
+    elseif ($f.DirectoryName -match '\\locations(\\|$)' -and $f.Name -ne 'index.html') {
         $fname = $f.Name
-        $c = [regex]::Replace($c, '<link\s+rel="canonical"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"canonical\" href=\"https://www.acelang.com/locations/$fname\"")
-        $c = [regex]::Replace($c, '<meta\s+property="og:url"\s+content="https://www\.acelang\.com/[^"#>]*"', "<meta property=\"og:url\" content=\"https://www.acelang.com/locations/$fname\"")
-        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="en-GB"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://www.acelang.com/locations/$fname\"")
-        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="x-default"\s+href="https://www\.acelang\.com/[^"#>]*"', "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://www.acelang.com/locations/$fname\"")
+        $locUrl = "https://www.acelang.com/locations/$fname"
+        $c = [regex]::Replace($c, '<link\s+rel="canonical"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="canonical" href="' + $locUrl + '"')
+        $c = [regex]::Replace($c, '<meta\s+property="og:url"\s+content="https://www\.acelang\.com/[^"#>]*"', '<meta property="og:url" content="' + $locUrl + '"')
+        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="en-GB"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="alternate" hreflang="en-GB" href="' + $locUrl + '"')
+        $c = [regex]::Replace($c, '<link\s+rel="alternate"\s+hreflang="x-default"\s+href="https://www\.acelang\.com/[^"#>]*"', '<link rel="alternate" hreflang="x-default" href="' + $locUrl + '"')
     }
 
     Set-Content -Path $f.FullName -Value $c -NoNewline
