@@ -756,6 +756,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarOverlay.classList.add('active');
         burgerIcon.classList.add('active');
         document.body.style.overflow = 'hidden';
+        const burgerButton = document.querySelector('.burger-menu');
+        if (burgerButton) burgerButton.setAttribute('aria-expanded', 'true');
     }
 
     function closeSidebarMenu() {
@@ -763,11 +765,15 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarOverlay.classList.remove('active');
         burgerIcon.classList.remove('active');
         document.body.style.overflow = '';
+        const burgerButton = document.querySelector('.burger-menu');
+        if (burgerButton) burgerButton.setAttribute('aria-expanded', 'false');
     }
 
     // Burger menu click handler
     if (burgerMenu) {
         burgerMenu.addEventListener('click', openSidebar);
+        burgerMenu.setAttribute('aria-expanded', 'false');
+        burgerMenu.setAttribute('aria-controls', 'mobile-sidebar');
     }
 
     // Close sidebar handlers

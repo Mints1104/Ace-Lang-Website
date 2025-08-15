@@ -1,9 +1,7 @@
 User-agent: *
 Allow: /
 
-# Disallow CSS, JS, and admin directories
-Disallow: /css/
-Disallow: /js/
+# Disallow admin and private directories
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
