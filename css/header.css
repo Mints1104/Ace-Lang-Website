@@ -226,6 +226,9 @@
     display: none;
     cursor: pointer;
     z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .burger-icon {
