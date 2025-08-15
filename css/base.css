@@ -9,9 +9,18 @@
     --primary-light: #4a5568;
 
     /* Accent Colors - Enhanced Palette */
+
+    /*
+    old blue accents just in case
     --accent-color: #3182ce;
     --accent-light: #63b3ed;
     --accent-dark: #2c5282;
+    */
+
+    --accent-color: #10b981;
+    --accent-light: #34d399;
+    --accent-dark: #059669;
+    --accent-rgb: 16, 185, 129;
 
     /* Warm Accent Colors */
     --warm-accent: #f56565;
@@ -173,9 +182,10 @@ p {
     --text-primary: #0f1419;
     --text-secondary: #374151;
     --text-muted: #6b7280;
-    --accent-color: #2563eb;
-    --accent-light: #3b82f6;
-    --accent-dark: #1d4ed8;
+    --accent-color: #10b981;
+    --accent-light: #34d399;
+    --accent-dark: #059669;
+    --accent-rgb: 16, 185, 129;
 }
 
 /* Smooth scrolling */

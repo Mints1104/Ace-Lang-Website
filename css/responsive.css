@@ -294,7 +294,7 @@ a:focus {
 .quick-contact-mobile:focus {
     outline: 2px solid #ffffff;
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.3);
 }
 
 .quick-contact-mobile:focus:not(:focus-visible) {
@@ -305,7 +305,7 @@ a:focus {
 .quick-contact-mobile:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.3);
 }
 
 /* Force remove focus state after click/touch */

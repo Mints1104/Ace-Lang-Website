@@ -66,7 +66,7 @@
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
     transform: translateY(-1px);
 }
 
@@ -152,9 +152,9 @@
 }
 
 .form-status.info {
-    background-color: rgba(49, 130, 206, 0.1);
+    background-color: rgba(var(--accent-rgb), 0.1);
     color: var(--accent-color);
-    border: 1px solid rgba(49, 130, 206, 0.3);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
 }
 
 @keyframes fadeIn {
@@ -234,7 +234,7 @@
 .form-help {
     margin-top: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: rgba(49, 130, 206, 0.05);
+    background-color: rgba(var(--accent-rgb), 0.05);
     border-radius: var(--radius-md);
     border-left: 3px solid var(--accent-color);
 }
@@ -508,7 +508,7 @@
 
 .file-label:hover {
     border-color: var(--accent-color);
-    background: rgba(59, 130, 246, 0.05);
+    background: rgba(var(--accent-rgb), 0.05);
 }
 
 .file-label i {
@@ -596,7 +596,7 @@
 }
 
 .file-icon-doc {
-    color: #2563eb;
+    color: var(--accent-color);
 }
 
 .file-icon-image {
@@ -681,7 +681,7 @@
 .contact .form-group select:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
 }
 
 .contact .form-group select {

@@ -63,6 +63,13 @@ foreach ($f in $files) {
     # Normalize incorrect phone
     $c = $c -replace '\+44-1633-123456', '+441633266201'
 
+    # Swap logo to transparent version (handles relative paths)
+    $c = $c -replace 'images/company_logo\.jpg', 'images/company_logo_transparent.png'
+    $c = $c -replace '\.\./images/company_logo\.jpg', '../images/company_logo_transparent.png'
+
+    # Remove stray double quote immediately before the H1 brand heading
+    $c = $c -replace '"\s*<h1>', '<h1>'
+
     Set-Content -Path $f.FullName -Value $c -Encoding UTF8
 }
 

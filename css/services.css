@@ -228,7 +228,7 @@ h3.language-section-title {
 }
 
 .collapse-toggle:hover {
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(var(--accent-rgb), 0.1);
     color: var(--accent-dark);
     border-color: var(--accent-color);
 }
@@ -348,7 +348,7 @@ h3.language-section-title {
     /* Mobile: JavaScript-controlled hiding */
     .services-grid .service-item.js-hidden,
     .language-grid .language-item.js-hidden {
-        display: none;
+        display: none !important;
     }
 
     /* Mobile: Show all items when expanded */
@@ -503,7 +503,7 @@ h3.language-section-title {
 .region-filter:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 /* Language item visibility */
@@ -647,7 +647,7 @@ h3.language-section-title {
 
 /* Simple hide/show for language items */
 .language-item.js-hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Mobile optimizations for language services */

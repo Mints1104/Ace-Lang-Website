@@ -30,10 +30,27 @@
     margin-bottom: var(--spacing-sm);
 }
 
+/* Ensure logo image displays at a sensible size */
+.site-logo {
+    height: 64px;
+    width: auto;
+    display: inline-block;
+    margin-right: var(--spacing-md);
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
 .header-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Align logo image and brand text side-by-side */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
 }
 
 /* Desktop Navigation Styles */
@@ -424,14 +441,28 @@
         display: none;
     }
 
+    .logo {
+        gap: var(--spacing-xs);
+    }
+
+    /* Show brand text on one compact line; hide slogan */
     .logo h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0;
+        display: block;
+        font-size: 1rem;
+        line-height: 1.1;
+        margin: 0;
+        white-space: nowrap;
+        max-width: 60vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .slogan {
-        font-size: 0.8rem;
-        margin-bottom: 0;
+        display: none;
+    }
+
+    .site-logo {
+        height: 40px;
     }
 
     .header-contact {
@@ -466,6 +497,10 @@
 
     .slogan {
         font-size: 0.75rem;
+    }
+
+    .site-logo {
+        height: 36px;
     }
 
     .contact-info {

@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: ${type === 'error' ? '#f56565' : type === 'success' ? '#48bb78' : '#3182ce'};
+            background: ${type === 'error' ? '#f56565' : type === 'success' ? '#48bb78' : '#10b981'};
             color: white;
             padding: 1rem 1.5rem;
             border-radius: 8px;
