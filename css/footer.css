@@ -41,6 +41,20 @@
     font-size: 0.9rem;
 }
 
+/* Ensure footer links (including hash links like #services, #about) do not show default blue/underline */
+/* Ensure consistent styling for all footer list links (including hash links) */
+.footer-section ul li a:link,
+.footer-section ul li a:visited {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-section ul li a:hover {
+    color: #a0aec0;
+    text-decoration: none;
+}
+
 .footer-section ul li a:hover {
     color: #a0aec0;
 }
