@@ -585,15 +585,36 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormStatus('Sending your message...', 'info');
 
             try {
+                // Use FormData to support file uploads; let the browser set the multipart boundary
+                // Add debug logs for troubleshooting
+                console.group('Netlify form submission');
+                console.log('Action:', contactForm.action);
+                console.log('Method:', contactForm.method);
+                const hasFiles = !!contactForm.querySelector('input[type="file"]');
+                console.log('Has file input:', hasFiles);
+                try {
+                    const previewEntries = [];
+                    for (const [key, value] of formData.entries()) {
+                        if (value instanceof File) {
+                            previewEntries.push({ key, fileName: value.name, size: value.size, type: value.type });
+                        } else {
+                            previewEntries.push({ key, value: String(value).slice(0, 200) });
+                        }
+                    }
+                    console.log('FormData preview:', previewEntries);
+                } catch (e) {
+                    console.warn('Could not preview FormData entries:', e);
+                }
+
                 const response = await fetch(contactForm.action, {
                     method: contactForm.method,
-                    body: new URLSearchParams(formData),
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
+                    body: formData
                 });
 
+                console.log('Response status:', response.status, response.statusText);
+                const responseText = await response.text();
                 if (response.ok) {
+                    console.log('Response body (truncated):', responseText.slice(0, 500));
                     showFormStatus('Thank you for your message! We will get back to you within 24 hours.', 'success');
                     contactForm.reset();
                     
@@ -616,9 +637,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Show success notification
                     showNotification('Message sent successfully!', 'success');
                 } else {
-                    showFormStatus('An error occurred while sending your message. Please try again later.', 'error');
+                    console.error('Submission failed. Response body:', responseText);
+                    showFormStatus(`An error occurred (HTTP ${response.status}). Please try again later.`, 'error');
                     showNotification('Submission failed. Please try again.', 'error');
                 }
+                console.groupEnd();
             } catch (error) {
                 console.error('Error submitting form:', error);
                 showFormStatus('Network error. Please check your connection and try again.', 'error');
