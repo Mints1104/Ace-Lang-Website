@@ -627,7 +627,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Clear all validation states and interaction flags
                     inputs.forEach(input => {
                         input.classList.remove('error', 'success');
-                        input.closest('.form-group').classList.remove('error', 'success');
+                        const group = input.closest('.form-group');
+                        if (group) {
+                            group.classList.remove('error', 'success');
+                        }
                         delete input.dataset.interacted; // Clear interaction state
                     });
                     
