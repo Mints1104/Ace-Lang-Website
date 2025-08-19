@@ -172,6 +172,15 @@ function Fix-JsonLdLogo {
     return [regex]::Replace($Content, '(?i)"logo"\s*:\s*"https?://www\.acelang\.com/images/logo\.png"', '"logo": "https://www.acelang.com/images/company_logo_transparent.png"')
 }
 
+function Ensure-MultipartEnctype {
+    param([string]$Content)
+    # If the page has a file input, ensure the containing form includes enctype="multipart/form-data"
+    if ($Content -match '(?i)<input[^>]*type\s*=\s*"file"') {
+        $Content = [regex]::Replace($Content, '(?is)<form\b(?![^>]*enctype=)([^>]*)>', '<form$1 enctype="multipart/form-data">')
+    }
+    return $Content
+}
+
 function Remove-BrokenSomaliLinks {
     param([string]$Content)
     # Remove list items linking to somali-translation-services.html (single-line)
@@ -217,6 +226,7 @@ function Process-File {
     $new = Ensure-SidebarOverlay -Content $new
     $new = Fix-IconsAriaHidden -Content $new
     $new = Ensure-SkipLinkAndMain -Content $new
+    $new = Ensure-MultipartEnctype -Content $new
     $new = Fix-CollapseAria -Content $new
     $new = Fix-CurrencyMojibakeAll -Content $new
     if ($File.Name -ieq 'index.html') { 
