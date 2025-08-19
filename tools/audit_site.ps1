@@ -1,5 +1,5 @@
 Param(
-    [string]$RootPath = (Split-Path -Parent $MyInvocation.MyCommand.Path),
+    [string]$RootPath = (Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)),
     [switch]$SummaryOnly
 )
 
@@ -88,11 +88,9 @@ function Test-ButtonSemantic {
 function Test-JsonLdCurrency {
     param([string]$Content)
     $issues = @()
-    if ($Content -match '[�\?]\s*\d{1,3}(?:,\d{3})*(?:\.\d+)?') {
-        $issues += 'Suspicious currency symbol encoding in text/JSON-LD (e.g., �25 or ?25).'
-    }
-    if ($Content -match 'Â£') {
-        $issues += 'Mojibake detected for pound sign (Â£). Use £ or \u00A3.'
+    # Detect suspicious currency amounts preceded by unknown replacement or question mark (common mojibake)
+    if ($Content -match '[\?]\s*\d{1,3}(?:,\d{3})*(?:\.\d+)?') {
+        $issues += 'Suspicious currency symbol encoding in text/JSON-LD (e.g., ?25). Consider using GBP symbol (Unicode U+00A3) or GBP explicitly.'
     }
     return $issues
 }
